@@ -14,7 +14,7 @@ header {
     /*viewport height. 100% de la altura total de la ventana del navegador*/
     /*padding: 20px 30px;*/
     background-color: rgba(253, 245, 235, 1);
-    background-image: url(imagenes/kitty_warf.jpg);
+    background-image: url(../imagenes/kitty_warf.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
