@@ -1,0 +1,56 @@
+/*paneles desplegables*/
+#paneles-conten {
+    width: 50vw;
+    height: 100%;
+    margin: 10px auto;
+    border: 2px solid blue;
+    padding: 20px;
+    background-color: aquamarine;
+}
+
+/* escondemos los input radio*/
+.panel-input {
+    display: none;
+    /*display none es diferente a display hidden*/
+}
+
+/*input[type="radio"]{
+}*/
+
+/*estilos del label del panel / cabecera del panel*/
+.panel label {
+    display: block;
+    border: 1px solid blueviolet;
+    height: 1.8em;
+    padding: 5px 0 0 15px;
+    font-weight: 600;
+    width: calc(100% - 15px); /*resta los 15px que se añadieron por el padding*/
+}
+
+/*padding lateral para los textos*/
+.panel p {
+    padding: 0 15px;
+}
+
+/*margen inferior para cada panel*/
+.panel {
+    margin-bottom: 10px;
+}
+
+
+/*estilos del contenido PLEGADO*/
+.contenido {
+    width: 100%;
+    border: 1px solid transparent;
+    height: 0;
+    overflow: hidden; /*escondo los elementos que sobresalen
+    /*lo que sale del tamaño que tiene la caja lo esconde*/
+}
+
+/*estilos del contenido DESPLEGADO*/
+.panel-input:checked~.contenido {
+    height: auto;/*cambio el alto para sobrescribir la orden de height*/
+    border-color: brown; /*defino color de borde para que se visualice*/
+    border-top: none;
+    margin-bottom: 4px;
+}

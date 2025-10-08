@@ -1,0 +1,49 @@
+body {
+    background-color: aquamarine;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background: linear-gradient(45deg, rgb(117, 117, 161), rgb(143, 175, 143));
+    /*cuando hago un degragadado en vez de colocar background color se usa solo background*/
+    display: flex;
+    top: 0;
+}
+
+nav ul {
+    display: flex;
+    padding: 0;
+    /*las listas tienen padding por defecto*/
+    list-style: none;
+    gap: 10px;
+}
+
+nav ul li {
+    text-transform: uppercase;
+    padding: 10px;
+    margin: auto;
+    background-color: rgb(44, 99, 99);
+    color: aliceblue;
+    border-radius: 10px;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /*para botones no se recomienda fuentes con serifa*/
+}
+
+nav ul li:hover {
+background: linear-gradient(45deg, rgb(117, 117, 161), rgb(143, 175, 143));
+}
+
+.submenu{
+display: none;
+position: absolute;
+}
+
+nav ul li:hover ul{
+    display: block;
+}
+
+.submenu a{
+text-decoration: none;
+}

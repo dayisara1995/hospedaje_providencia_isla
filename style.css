@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    background-color: rgba(253, 245, 235, 1);
+    color: rgb(77, 75, 75);
+    /*font-family: "Amatic SC", sans-serif;
+    font-weight: 800; controla el grosor de las letras, es decir, qué tan negrita o delgada se ve una fuente*/
+}
+
+
+header {
+    height: 100vh;
+    /*viewport height. 100% de la altura total de la ventana del navegador*/
+    /*padding: 20px 30px;*/
+    background-color: rgba(253, 245, 235, 1);
+    background-image: url(imagenes/kitty_warf.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*text-align: center; /* organiza los elementos interiores centradamente*/
+}
+
+nav {
+    position: fixed;
+    /*fixed se queda siempre visible respecto a la ventana, mientras que sticky solo se pega dentro de su contenedor al hacer scroll.*/
+    top: 0;
+    background-color: rgba(253, 245, 235, 0.745);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*border-bottom: 2px solid rgb(196, 172, 212);*/
+}
+
+nav img {
+    /*height: 16%;*/
+    width: 12%;
+    filter: contrast(200%) saturate(70%);
+    padding: 5px;
+    /*background-color: rgba(255, 255, 255, 0.822)*/
+}
+
+nav ul {
+    display: flex;
+    gap: 35px;
+    /*espacio entre elementos*/
+    list-style: none;
+}
+
+nav li a {
+    padding: 10px;
+    text-decoration: none;
+    /*text-transform: uppercase;*/
+    font-size: 17px;
+    color: #03453d;
+}
+
+nav li a:hover {
+    border-bottom: 1px solid #3d423c;
+    color: #3d423c;
+    background-color: #3d423c0c;
+}
+
+main {
+    text-align: center;
+    /*padding: 20px;*/
+    /*box-sizing: border-box; /*incluye padding dentro del ancho*/
+}
+
+h2,
+p {
+    max-width: 70%;
+    /*ajusta el ancho del elemento en relacion a la pantalla  y que no sea fijo*/
+    /*min-width: ;*/
+    margin: 30px auto;
+    /*centra el main horizontalmente */
+}
+
+h2 {
+    font-size: 28px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.galeria-isla {
+    display: flex;
+    justify-content: center;
+    /* centra horizontalmente */
+    align-items: center;
+    /* centra verticalmente */
+    gap: 5px;
+    flex-wrap: nowrap;
+    /* permite que se acomoden si el espacio es pequeño */
+    width: 70vw;
+    /* ocupa todo el ancho visible de la pantalla */
+    /*box-sizing: border-box; /* incluye padding/border dentro del ancho total */
+    margin: 15px auto;
+}
+
+.galeria-isla img {
+    width: 33.33%;
+    /* cada imagen ocupa el 33% del ancho disponible */
+    height: 300px;
+    /*max-width: 100%;*/
+    padding: 5px;
+    object-fit: cover;
+}
+
+.galeria-alojamiento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: nowrap;
+    /* permite que se acomoden si el espacio es pequeño */
+    width: 70vw;
+    /*box-sizing: border-box; /* incluye padding/border dentro del ancho total */
+    margin: 15px auto
+}
+
+.galeria-alojamiento img {
+    width: 25%;
+    height: 300px;
+    /*max-width: 100%;*/
+    padding: 5px;
+    object-fit: cover;
+}
+
+footer {
+    background-color: #f5eadb;
+    padding: 30px;
+}
+
+/*pendiente quitar subrayado links*/
+
+
+.contacto svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer organizado con Flex*/
+#contenedor-caja-footer {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+}
+
+#caja-contacto {
+    display: flex;
+    flex-direction: column;
+    /*white-space: nowrap; /*Propiedad: valor; ---Propiedad que vi en chatGPT para evitar salto de línea */
+}
+
+#caja-informacion {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
