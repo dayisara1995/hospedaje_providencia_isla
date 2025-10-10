@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bad+Script&family=Handlee&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    background-color: rgba(253, 245, 235, 1);
+    color: rgb(77, 75, 75);
+}
+
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* coloca el contenido uno debajo del otro */
+    justify-content: center;
+    /* centra verticalmente */
+    align-items: center;
+    /* centra horizontalmente */
+    text-align: center;
+    /* PENDIENTE */
+    padding: 0px 300px;
+}
+
+header h1 {
+    font-family: "Bad Script", cursive;
+    font-weight: 500;
+    /* grosor, ejemplo bold, 400, 700 */
+    font-style: normal;
+    font-size: 6vw;
+    /* aumentar o disminuir tamaño letra */
+    letter-spacing: -1px;
+    /* espaciado entre letras */
+    word-spacing: -2px;
+    /* espaciado entre palabras */
+    color: #03453d;
+    margin: 0;
+}
+
+header h2 {
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2vw;
+    color: rgb(70, 70, 70);
+    margin: 0;
+}
+
+header p {
+    font-size: 18px;
+    margin: 0 0;
+    margin: 24px;
+    padding: 14px;
+}
+
+header li {
+    list-style: none;
+}
+
+nav {
+    position: fixed;
+    /* fixed se queda siempre visible respecto a la ventana, mientras que sticky solo se pega dentro de su contenedor al hacer scroll */
+    top: 0;
+    background-color: rgba(253, 245, 235, 0.745);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*border-bottom: 2px solid rgb(196, 172, 212);*/
+}
+
+nav img {
+    /*height: 16%;*/
+    width: 12%;
+    filter: contrast(200%) saturate(70%);
+    padding: 5px;
+    /*background-color: rgba(255, 255, 255, 0.822)*/
+}
+
+nav ul {
+    display: flex;
+    gap: 35px;
+    /* espacio entre elementos */
+    list-style: none;
+}
+
+nav li a {
+    padding: 10px;
+    text-decoration: none;
+    /*text-transform: uppercase;*/
+    font-size: 17px;
+    color: #03453d;
+}
+
+nav li a:hover {
+    border-bottom: 1px solid #3d423c;
+    color: #3d423c;
+    background-color: #3d423c0c;
+}
+
+.titulo-servicios-habitaciones {
+margin-top: 90px;
+}
+
+.listado-servicios-habitaciones {
+    display: flex;
+    flex-direction: row;
+    /*justify-content: center;*/
+    align-items: center;
+    padding: 0;
+}
+
+.listado-servicios-habitaciones svg {
+    height: 60px;
+    width: auto;
+}
+
+.listado-servicios-habitaciones p {
+    font-size: 13px;
+    margin: 0;
+    padding: 0 10px;
+}

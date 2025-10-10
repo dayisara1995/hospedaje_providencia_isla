@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    background-color: rgba(253, 245, 235, 1);
+    color: rgb(77, 75, 75);
+}
+
+nav {
+    position: fixed;
+    /*fixed se queda siempre visible respecto a la ventana, mientras que sticky solo se pega dentro de su contenedor al hacer scroll.*/
+    top: 0;
+    background-color: rgba(253, 245, 235, 0.745);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*border-bottom: 2px solid rgb(196, 172, 212);*/
+}
+
+nav img {
+    /*height: 16%;*/
+    width: 12%;
+    filter: contrast(200%) saturate(70%);
+    padding: 5px;
+    /*background-color: rgba(255, 255, 255, 0.822)*/
+}
+
+nav ul {
+    display: flex;
+    gap: 35px;
+    /*espacio entre elementos*/
+    list-style: none;
+}
+
+nav li a {
+    padding: 10px;
+    text-decoration: none;
+    /*text-transform: uppercase;*/
+    font-size: 17px;
+    color: #03453d;
+}
+
+nav li a:hover {
+    border-bottom: 1px solid #3d423c;
+    color: #3d423c;
+    background-color: #3d423c0c;
+}
