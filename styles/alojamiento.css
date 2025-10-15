@@ -166,60 +166,68 @@ nav li a:hover {
     padding: 20px;
 }
 
+/*oculta inputs*/
 input[name="imagenes-habitaciones"] {
     position: absolute;
     left: -1000em;
 }
 
-/*input:checked+label {
-    border-bottom: none;
-    background-color: white;
-}*/
-
-.botones {
+/*.botones {
     display: flex;
-    /*flex-wrap: wrap; /*permite que los labels pasen a otra línea si no caben*/
+    flex-wrap: wrap; /*permite que los labels pasen a otra línea si no caben
     justify-content: space-evenly;
     align-items: center;
-    /*gap: 80px; recomendaciones sobre justify-content y gap:
+    gap: 80px; recomendaciones sobre justify-content y gap:
   - Para controlar el espacio exacto entre elementos, usar:
       justify-content: center;
       gap: [valor];
   - Para distribuir elementos automáticamente en todo el contenedor, usar:
       justify-content: space-around; // o space-evenly
-      /* No usar gap con space-around/space-evenly, puede generar espacios inesperados */
+      No usar gap con space-around/space-evenly, puede generar espacios inesperados 
     white-space: nowrap;
-    /*evita que el texto haga salto de línea */
+    evita que el texto haga salto de línea 
 }
 
 .botones label {
     padding: 5px 5px;
-    font-size: 14px;
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-weight: bold;
+    font-size: 1.3vw;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+}*/
+
+/*estilo de label activo*/
+/*input[name="imagenes-habitaciones"]:checked + label {} ----afecta solo a los inputs con ese name*/
+/*Cuando un <input> está marcado (checked), aplica estos estilos al <label> que está inmediatamente después de él.*/
+input:checked+label {
+    text-decoration: underline;
+    color: #03453d;
 }
 
-
-/* Ocultar todos los contenedores por defecto 
+/*ocultar todos los contenedores por defecto*/
 .contenedor .cont {
     display: none;
 }
 
-/* Mostrar contenedor 1 cuando radio 1 esté checked 
-#esencial:checked ~ .contenedor .cont:nth-of-type(1) {
+/*mostrar contenedor 1 cuando radio 1 esté checked*/
+#esencial:checked~.contenedor .cont:nth-of-type(1) {
     display: block;
 }
 
-/* Mostrar contenedor 2 cuando radio 2 esté checked 
-#vistamar:checked ~ .contenedor .cont:nth-of-type(2) {
+/*mostrar contenedor 2 cuando radio 2 esté checked*/
+#vistamar:checked~.contenedor .cont:nth-of-type(2) {
     display: block;
 }
 
-/* Mostrar contenedor 3 cuando radio 3 esté checked 
-#familiar:checked ~ .contenedor .cont:nth-of-type(3) {
+/*mostrar contenedor 3 cuando radio 3 esté checked*/
+#familiar:checked~.contenedor .cont:nth-of-type(3) {
     display: block;
 }
 
-/* Opcional: estilo de label activo 
-input[name="imagenes-habitaciones"]:checked + label {
-    font-weight: bold;
-    text-decoration: underline;
-}*/
+.cont img {
+    max-width: 40%;
+    /* Ajusta ancho de la imagen */
+    height: auto;
+    /* Mantener proporción */
+}
