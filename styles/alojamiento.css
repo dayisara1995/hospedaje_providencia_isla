@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     /* coloca el contenido uno debajo del otro */
@@ -164,6 +164,27 @@ nav li a:hover {
     margin: 10px auto;
     /*border: 1px solid #d9d9d9;*/
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center;
+    centra horizontalmente */
+}
+
+.contenedor img {
+    width: 800px;
+    /*siempre mide 800 px*/
+    height: auto;
+    /*mantener proporción */
+    max-width: 50%;
+    /*se adapta, pero nunca pasa de 500 px*/
+    margin: auto 30px;
 }
 
 /*oculta inputs*/
@@ -172,62 +193,31 @@ input[name="imagenes-habitaciones"] {
     left: -1000em;
 }
 
-/*.botones {
-    display: flex;
-    flex-wrap: wrap; /*permite que los labels pasen a otra línea si no caben
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 80px; recomendaciones sobre justify-content y gap:
-  - Para controlar el espacio exacto entre elementos, usar:
-      justify-content: center;
-      gap: [valor];
-  - Para distribuir elementos automáticamente en todo el contenedor, usar:
-      justify-content: space-around; // o space-evenly
-      No usar gap con space-around/space-evenly, puede generar espacios inesperados 
-    white-space: nowrap;
-    evita que el texto haga salto de línea 
-}
-
-.botones label {
-    padding: 5px 5px;
-    font-family: "Alumni Sans Pinstripe", sans-serif;
-    font-weight: bold;
-    font-size: 1.3vw;
-    letter-spacing: 2px;
-    word-spacing: 2px;
-}*/
-
 /*estilo de label activo*/
 /*input[name="imagenes-habitaciones"]:checked + label {} ----afecta solo a los inputs con ese name*/
 /*Cuando un <input> está marcado (checked), aplica estos estilos al <label> que está inmediatamente después de él.*/
 input:checked+label {
     text-decoration: underline;
     color: #03453d;
+    font-weight: 800;
 }
 
 /*ocultar todos los contenedores por defecto*/
-.contenedor .cont {
+.contenedor {
     display: none;
 }
 
 /*mostrar contenedor 1 cuando radio 1 esté checked*/
-#esencial:checked~.contenedor .cont:nth-of-type(1) {
-    display: block;
+#esencial:checked~.contenedor:nth-of-type(1) {
+    display: flex;
 }
 
 /*mostrar contenedor 2 cuando radio 2 esté checked*/
-#vistamar:checked~.contenedor .cont:nth-of-type(2) {
-    display: block;
+#vistamar:checked~.contenedor:nth-of-type(2) {
+    display: flex;
 }
 
 /*mostrar contenedor 3 cuando radio 3 esté checked*/
-#familiar:checked~.contenedor .cont:nth-of-type(3) {
-    display: block;
-}
-
-.cont img {
-    max-width: 40%;
-    /* Ajusta ancho de la imagen */
-    height: auto;
-    /* Mantener proporción */
+#familiar:checked~.contenedor:nth-of-type(3) {
+    display: flex;
 }
