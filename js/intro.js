@@ -73,8 +73,56 @@ document.querySelector("p") //ejemplo con parrafos
 let opcion1 = document.querySelector("·opcion1");
 let opcion2 = document.getElementById("opcion2");
 
+let colorTexto = document.querySelector("#color-texto");
+
+let btnTareaNueva = document.querySelector("#btn-tarea-nueva");
 
 
+//funcion
+function agregarTarea() {
+    let tareaNueva = document.querySelector("#tarea-nueva").value;
+    let listaTareas = document.querySelector("ul");
+    console.log(tareaNueva);
+    console.log(listaTareas.innerHTML);
+    let elemLista = document.createElement("li");
+    console.log(elemLista);
+    elemLista.innerHTML = tareaNueva;
+    listaTareas.appendChild(elemLista);
+    document.querySelector("#tarea-nueva").value = "";
+}
+
+//Eventos
+//click, keydown, keyup, mousedown, mouseup, keypress
+btnTareaNueva.addEventListener("click", agregarTarea);
+
+//cambiar color texto
+let parrafos = document.querySelector("p");
+
+function cambiarColorTexto(){
+parrafos.style.color = colorTexto.value;
+}
+
+colorTexto.addEventListener("input", cambiarColorTexto);
+
+
+
+//selecciona mas de un elemento, los guarda en forma de array
+let elemtosLista = document.querySelectorAll("ul li");
+//seleccion de un elem de array
+elementosLista[0]
+
+let ultimoElemTarea = document.querySelectorAll("ul > li:last-child")
+
+
+// index++ suma 1 al valor; indez-- resta 1 al valor; verificar si los + van antes o despues del valor para que se ejecute la operacion
+// Bucles - for
+
+//for (     inicio ;    condicion ;   modificador ) {instrucciones}
+for (let index = 0; index < elemtosLista.length; index++) {
+    const element = elemtosLista[index];
+}
 
 //Enlazar un archivo JavaScript externo. En el HTML, usa la etiqueta <script> con el atributo src para apuntar al archivo .js.  <script src="script.js"></script> ----justo antes de cerrar la etiqueta </body> para asegurar que el contenido HTML se cargue completamente antes de que se ejecute el código JavaScript.
 //Escribir JavaScript directamente en HTML: Coloca el código JavaScript dentro de las etiquetas <script> y puedes colocar esta etiqueta en la sección <head> o <body>. <body> <h1>Hola Mundo</h1> <script> alert("¡Hola desde JavaScript!"); </script> </body>
+
+document.querySelector("h1").classList.add("titulo-seccion")

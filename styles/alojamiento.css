@@ -221,3 +221,44 @@ input:checked+label {
 #familiar:checked~.contenedor:nth-of-type(3) {
     display: flex;
 }
+
+footer {
+    background-color: #f5eadb;
+    padding: 30px;
+}
+
+/*PENDIENTE quitar subrayado links*/
+
+
+.contacto svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer organizado con Flex*/
+#contenedor-caja-footer {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+}
+
+#caja-contacto {
+    display: flex;
+    flex-direction: column;
+    /*white-space: nowrap; /*Propiedad: valor; ---Propiedad que vi en chatGPT para evitar salto de línea */
+}
+
+#caja-informacion {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+
+/*-------------------------------------------------------------------------------------*/
+
+/*PENDIENTE REVISAR porque el estilo inicial NO se lo estoy dando a la primera imagen*/
+figure {
+    position: relative;
+    /*left: 0 !important;*/
+}
