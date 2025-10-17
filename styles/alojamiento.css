@@ -177,15 +177,20 @@ nav li a:hover {
     centra horizontalmente */
 }
 
-.contenedor img {
-    width: 800px;
-    /*siempre mide 800 px*/
-    height: auto;
-    /*mantener proporción */
-    max-width: 50%;
-    /*se adapta, pero nunca pasa de 500 px*/
-    margin: auto 30px;
+.contenedor .cont {
+    width: 45%;
+    margin: auto 20px;
 }
+
+/*.contenedor img {
+    width: 800px;
+    /*siempre mide 800
+    height: auto;
+    /*mantener proporción
+    max-width: 50%;
+    /*se adapta, pero nunca pasa de 500 px
+    margin: auto 30px;
+}*/
 
 /*oculta inputs*/
 input[name="imagenes-habitaciones"] {
@@ -229,7 +234,6 @@ footer {
 
 /*PENDIENTE quitar subrayado links*/
 
-
 .contacto svg {
     width: 20px;
     height: 20px;
@@ -257,8 +261,93 @@ footer {
 
 /*-------------------------------------------------------------------------------------*/
 
-/*PENDIENTE REVISAR porque el estilo inicial NO se lo estoy dando a la primera imagen*/
-figure {
-    position: relative;
-    /*left: 0 !important;*/
+
+/*.contenedor img {
+    width: 800px;
+    /*siempre mide 800 px
+    height: auto;
+    /*mantener proporción 
+    max-width: 50%;
+    /*se adapta, pero nunca pasa de 500 px
+    margin: auto 30px;
+}PROPIEDADES DE LA IMAGEN QUE oculte y que TENGO ARRIBA SOLO PARA RECORDAR*/
+
+.galeria {
+    width: 600px;
+    /*siempre mide 600 px */
+    height: auto;
+    /*mantener proporción*/
+    margin: auto 0;
+    overflow: hidden;
+    /* ocultamos lo que sobresalga de las imágenes del contenedor*/
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.08);
 }
+
+.galeria figure {
+    position: absolute;
+    /* hace que se superpongan las imágenes */
+    top: 0;
+    /* colocamos todas arriba */
+    left: 40px;
+    /* !!Ancho de la parte visible!! */
+    width: 600px;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.galeria>figure {
+    position: relative;
+    left: 0 !important;
+}
+
+.galeria img {
+    display: block;
+    width: 100%;
+}
+
+.galeria input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    /* para cubrir la parte visible de la imagen */
+    height: 100%;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    z-index: 100;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.galeria input:checked {
+    width: 5px;
+    left: auto;
+    right: 0px;
+}
+
+.galeria input:checked~figure {
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    -ms-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    left: 335px;
+}
+
+.galeria input:checked~figure input {
+    z-index: 1;
+}
+
+figure {
+    margin: 0;
+}
+
