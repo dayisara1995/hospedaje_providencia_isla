@@ -258,40 +258,31 @@ footer {
     list-style: none;
 }
 
-
 /*-------------------------------------------------------------------------------------*/
 
-
-/*.contenedor img {
-    width: 800px;
-    /*siempre mide 800 px
-    height: auto;
-    /*mantener proporción 
-    max-width: 50%;
-    /*se adapta, pero nunca pasa de 500 px
-    margin: auto 30px;
-}PROPIEDADES DE LA IMAGEN QUE oculte y que TENGO ARRIBA SOLO PARA RECORDAR*/
-
+/* estilo del contenedor */
 .galeria {
-    width: 600px;
-    /*siempre mide 600 px */
+    width: 450px;
+    /*siempre mide 450 px */
     height: auto;
     /*mantener proporción*/
     margin: auto 0;
     overflow: hidden;
     /* ocultamos lo que sobresalga de las imágenes del contenedor*/
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.08);
+    /*border: 5px solid rgba(189, 188, 188, 0.5);*/
 }
 
+/* estilo para las imágenes de la galería */
 .galeria figure {
     position: absolute;
     /* hace que se superpongan las imágenes */
     top: 0;
     /* colocamos todas arriba */
-    left: 40px;
+    left: 60px;
     /* !!Ancho de la parte visible!! */
-    width: 600px;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
+    width: 400px;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.7);
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -299,6 +290,7 @@ footer {
     transition: all 0.3s ease-in-out;
 }
 
+/* estilo inicial para la primera imagen. > selector de hijo directo */
 .galeria>figure {
     position: relative;
     left: 0 !important;
@@ -306,34 +298,50 @@ footer {
 
 .galeria img {
     display: block;
+    /* hace que la imagen se comporte como un bloque (por defecto son elementos en línea) y elimine espacios indeseados */
     width: 100%;
+    /* ajusta la imagen para que ocupe todo el ancho del contenedor */
+    height: 260px; /*inicialmente no había definido height pero las imagenes correspondientes a la habitacion familiar se desajustaron*/
 }
 
+/* estilo para los "controles de navegación" */
 .galeria input {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px;
-    /* para cubrir la parte visible de la imagen */
+    /*Los input se colocan encima de las imágenes, alineados en la esquina superior izquierda*/
+    width: 60px;
+    /*Para cubrir la parte visible de la imagen*/
     height: 100%;
+    /* cubre toda la altura del contenedor*/
     cursor: pointer;
+    /* Crea un puntero tipo mano, indica que es clickeable*/
     border: 0;
     padding: 0;
+    /*border y padding 0 elimina cualquier borde o relleno del input, para que no altere el diseño*/
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     opacity: 0;
+    /*Hace que el input sea invisible y funcional (recibe clics): Las dos primeras líneas son para navegadores antiguos (como Internet Explorer); opacity: 0; es el método moderno (total transparencia) */
     z-index: 100;
+    /* Asegura que el input quede por encima de otros elementos, para que los clics lo alcancen*/
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    /*Quita el estilo por defecto del navegador (por ejemplo, el cuadrado del checkbox o el círculo del radio)*/
 }
 
+/*escondemos el input cuando está seleccionado y evitamos que interfiera al cambiar la imagen*/
 .galeria input:checked {
     width: 5px;
+    /* Su ancho se reduce a 5px */
     left: auto;
+    /* Deja de estar alineado a la izquierda (left: auto) */
     right: 0px;
+    /* Se mueve al borde derecho (right: 0px) */
 }
 
+/*mueve las imagenes a la izquierda. ~ selecciona los hermanos siguientes al elemento*/
 .galeria input:checked~figure {
     -webkit-transition: all 0.7s ease-in-out;
     -moz-transition: all 0.7s ease-in-out;
@@ -341,13 +349,28 @@ footer {
     -ms-transition: all 0.7s ease-in-out;
     transition: all 0.7s ease-in-out;
     left: 335px;
+    /**-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;* PENDIENTE/
+    /*Cuando un input dentro de .galeria está marcado: todos los figure hermanos que vienen después se mueven 335px a la izquierda/derecha*/
 }
 
+/*Cuando un input dentro de .galeria está marcado, aplica estilos a los input que estén dentro de los figure que vienen después de él*/
 .galeria input:checked~figure input {
     z-index: 1;
+    /*Resumen visual de la lógica
+1. La galería tiene varios input y figure alineados.
+2. Solo un input puede estar checked (si es tipo radio).
+3. Cuando un input está marcado, el z-index del input dentro del siguiente figure sube, haciendo que sea clickeable.
+4. Esto permite que al hacer clic en esa área invisible, la galería “avance” a la siguiente imagen.
+*/
 }
 
 figure {
     margin: 0;
+    /*Los <figure> por defecto suelen tener márgenes verticales y horizontales, dependiendo del navegador, al poner margin 0:
+    Las imágenes se alinean perfectamente dentro del contenedor .galeria.
+    Evita que haya espacios extra entre imágenes o con los bordes del contenedor.*/
 }
 
+/*PENDIENTE REVISAR PORQUE QUEDA ABIERTA LA ULTIMA IMAGEN EN VEZ DE LA PRIMERA*/

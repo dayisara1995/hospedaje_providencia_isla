@@ -1,97 +1,3 @@
-
-
-/*PENDIENTE*/
-/* estilo del contenedor */
-.galeria {
-  width: 535px;
-  /* debemos dar un ancho fijo */
-  margin: 20px auto;
-  overflow: hidden;
-  /* ocultamos lo que sobresalga de las imágenes del contenedor*/
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.08);
-  border: 7px solid rgba(189, 188, 188, 0.6);
-}
-/*PENDIENTE*/
-
-
-
-/*PENDIENTE*/
-/* estilo para las imágenes de la galería */
-.galeria figure {
-  position: absolute;
-  /* hace que se superpongan las imágenes */
-  top: 0;
-  /* colocamos todas arriba */
-  left: 50px;
-  /* !!Ancho de la parte visible!! */
-  width: 335px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-/*PENDIENTE*/
-
-/*HECHO PERO PENDIENTE REVISAR CAMBIOS*/
-/* estilo inicial para la primera imagen. > selector de hijo directo */
-.galeria>figure {
-  position: relative;
-  left: 0 !important;
-}
-/*HECHO PERO PENDIENTE REVISAR CAMBIOS*/
-
-/*HECHO PERO PENDIENTE REVISAR CAMBIOS*/
-.galeria img {
-  display: block;
-  width: 100%;
-}
-/*HECHO PERO PENDIENTE REVISAR CAMBIOS*/
-
-/*PENDIENTE*/
-/* estilo para los "controles de navegación" */
-.galeria input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50px;
-  /* para cubrir la parte visible de la imagen */
-  height: 100%;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  opacity: 0;
-  z-index: 100;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-/*PENDIENTE*/
-
-/*PENDIENTE*/
-/* escondemos el input cuando está seleccionado */
-.galeria input:checked {
-  width: 5px;
-  left: auto;
-  right: 0px;
-}
-/*PENDIENTE*/
-
-/*PENDIENTE*/
-/* mueve las imagenes a la izquierda. ~ selecciona los hermanos siguientes al elemento */
-.galeria input:checked ~ figure {
- -webkit-transition: all 0.7s ease-in-out;
-  -moz-transition: all 0.7s ease-in-out;
-  -o-transition: all 0.7s ease-in-out;
-  -ms-transition: all 0.7s ease-in-out;
-  transition: all 0.7s ease-in-out;
-  left: 335px;
-} 
-/*PENDIENTE*/
-
 /*PENDIENTE*/
 /* estilo para la descripción de las imágenes */
 .galeria figcaption {
@@ -173,18 +79,6 @@ line-height: 20px;
 }
 /*PENDIENTE*/
 
-/*PENDIENTE*/
-.galeria input:checked ~ figure input {
-  z-index: 1;
-}
-/*PENDIENTE*/
-
-/*PENDIENTE*/
-figure {
-  margin: 0;
-}
-/*PENDIENTE*/
-
 
 /*PENDIENTE*/
 
@@ -243,7 +137,5 @@ html,
 input {
   font-family: sans-serif;
 }
-
-
 
 /*PENDIENTE*/
