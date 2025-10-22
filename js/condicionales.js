@@ -109,6 +109,16 @@ switch (a) {
     alert("Elegiste un número mayor a 3");
 }
 
+// Resolución profesora:
+let a = +prompt('Elige un número del 0 al 3', '');
+
+switch (a) {
+  case 0: alert("Has elegido cero"); break;
+  case 1: alert("Has elegido el uno"); break;
+  case 2:
+  case 3: alert("Elegiste un dos o un tres"); break;
+}
+
 
 // Ejercicio 2
 // Convierte este switch en un if
@@ -150,10 +160,36 @@ else {
 
 document.getElementById("caja-mensaje-estacion").innerText = mensajeEstacion;
 
+//Resolución profesora
+let estacion = "verano";
+let mensajeEstacion;
+
+if (estacion == "primavera") {
+  mensajeEstacion = "Estamos en primavera, viene el buen tiempo.";
+} else if (estacion == "otoño" || estacion == "invierno") {
+  mensajeEstacion = 'Estamos en otoño o invierno, hace frío.';
+} else {
+  mensajeEstacion = 'Probablemente sea verano, ¿hace calor?';
+}
+  //Si la codinción fuera que se tienen que cumpliar las dos se usa &&
+
+document.getElementById("caja-mensaje-estacion").innerText = mensajeEstacion;
+
+
+
+
+
+
 
 // Ejercicio 3---------------------------------
 
 let edad = prompt("¿Qué edad tienes?");
-let mensaje = (edad < 18) ? (alert("Eres menor de edad")) : "Bienvenido!!!"; 
+let mensaje = (edad < 18) ? (alert("Eres menor de edad")) : "Bienvenido!!!";
 
 document.getElementById("caja-mensaje-estacion").innerText = mensaje;
+
+//Resolución profesora
+let edad = prompt("¿Qué edad tienes?");
+// ? :
+
+edad < 18 ? alert("Eres menor de edad, no puedes acceder") : alert("Bienvenido");

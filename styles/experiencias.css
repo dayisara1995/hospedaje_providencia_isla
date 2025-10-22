@@ -1,9 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bad+Script&family=Handlee&display=swap');
+
 body {
     margin: 0;
     padding: 0;
     line-height: 1.5;
     background-color: rgba(253, 245, 235, 1);
     color: rgb(77, 75, 75);
+}
+
+header {
+    position: relative;
+    /* Importante para que los hijos absolutos se posicionen respecto a header */
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(253, 245, 235, 1);
+    overflow: hidden;
+    /* Evita que el video o la pseudo-capa se desborden */
+}
+
+header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 100%;
+    margin-top: 100px;
+    transform: translate(-50%, -50%);
+    /*box-sizing: border-box;*/
+    /*se calcula ancho y alto incluyendo el padding y el borde dentro del tamaño total del elemento*/
+    object-fit: cover;
+    /*hace que el video se recorte y escale como una imagen de fondo (similar a background-size: cover*/
+    z-index: 0;
+    /*Envía el video detrás del contenido */
+}
+
+header .contenido-header {
+    position: relative;
+    top: 40%;
+    width: 60%;
+    height: 30%;
+    margin: auto;
+    text-align: center;
+    color: #f5eadb;
+    z-index: 2;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    /* background: rgba(135, 193, 207, 0.664); */
+}
+
+.contenido-header h1 {
+    font-size: 52px;
+    font-weight: 400;
+}
+
+.contenido-header p {
+    font-size: 32px;
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-weight: 400;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 100%;
+    margin-top: 100px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.4);
+    /* Oscurece un poco el video */
+    z-index: 1;
 }
 
 nav {
@@ -45,4 +112,53 @@ nav li a:hover {
     border-bottom: 1px solid #3d423c;
     color: #3d423c;
     background-color: #3d423c0c;
+}
+
+.galeria-experiencias {
+    margin: 80px 100px;
+    text-align: center;
+}
+
+
+footer {
+    background-color: #f5eadb;
+    padding: 30px;
+}
+
+/*PENDIENTE quitar subrayado links*/
+
+.contacto svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer organizado con Flex*/
+#contenedor-caja-footer {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+}
+
+#caja-informacion {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+#caja-contacto {
+    display: flex;
+    flex-direction: column;
+    /*white-space: nowrap; /*Propiedad: valor; ---Propiedad que vi en chatGPT para evitar salto de línea */
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 5px;
+    width: 25px;
+    fill: #999;
+}
+
+.social-links a:hover {
+    fill: #0a574e94;
+    transform: scale(1.1);
 }
