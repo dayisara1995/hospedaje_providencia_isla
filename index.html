@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=""><!--PENDIENTE-->
     <title>Seven Haven</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" href="imagenes/favicon.png" type="image/x-icon">
@@ -12,6 +13,38 @@
 <body>
     <header>
         <!-- <h1>/ /</h1> -->
+        <div class="barra-reservas">
+            <form action="#" method="get" class="form-disponibilidad">
+                <!--<form>: define un formulario HTML, donde el usuario ingresará datos.-->
+                <!--action="#": indica la URL a la que se enviarán los datos cuando el usuario presione “Buscar”. # es un placeholder, se usa mientras no haya un backend conectado.-->
+                <!--method="get": define el método de envío de los datos: get: los datos se envían en la URL, como parámetros (ej.: ?checkin=2025-10-28&checkout=2025-10-30).-->
+                <div class="campo">
+                    <label for="checkin">Check in</label>
+                    <!--for="checkin" conecta el label con el input que tiene id="checkin"; al hacer clic en el texto, el cursor se enfoca en el input.-->
+                    <input type="date" id="checkin" name="checkin" required>
+                    <!--type="date" → crea un selector de fecha.-->
+                    <!--id="checkin" → identifica el input en la página, necesario para el label.-->
+                    <!--name="checkin" → nombre del campo que se enviará al servidor.-->
+                    <!--required → obliga al usuario a completar el campo antes de enviar el formulario.-->
+                </div>
+
+                <div class="campo">
+                    <label for="checkout">Check out</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
+
+                <div class="campo">
+                    <label for="huespedes">Huéspedes</label>
+                    <input type="number" id="huespedes" name="huespedes" min="1" value="2" required>
+                    <!--<input type="number">: permite ingresar solo números.-->
+                    <!--min="1" → el valor mínimo permitido es 1 (no se pueden poner 0 o negativos).-->
+                    <!--value="2" → valor inicial por defecto (el formulario aparece con 2 huéspedes).-->
+                </div>
+
+                <button type="submit" class="btn-buscar">Buscar</button>
+                <!--type="submit": al hacer clic, envía los datos del formulario al servidor o a la URL indicada en action.-->
+            </form>
+        </div>
     </header>
 
     <nav>
@@ -22,6 +55,8 @@
             <li><a href="pages/contacto.html">Contacto</a></li>
         </ul>
     </nav>
+
+
 
     <main>
         <h2>Descubre la magia de Providencia</h2>

@@ -19,14 +19,18 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     /*text-align: center; /* organiza los elementos interiores centradamente*/
+    /* position: relative;
+    overflow: hidden; */
 }
 
 nav {
     position: fixed;
     /*fixed se queda siempre visible respecto a la ventana, mientras que sticky solo se pega dentro de su contenedor al hacer scroll.*/
     top: 0;
+    height: 60px;
+    padding: 5px 25px;
+    box-sizing: border-box;
     background-color: rgba(253, 245, 235, 0.745);
-    padding: 5px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,6 +65,86 @@ nav li a:hover {
     color: #3d423c;
     background-color: #3d423c0c;
 }
+
+.barra-reservas {
+    position: fixed; /*antes tenia absolute*/
+    top: 60px;
+    /* justo debajo del nav */
+    width: 100%;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    /*255, 255, 255 → color blanco. 0.15 → transparencia (alfa), va de 0 a 1: 0 → completamente transparente, 1 → completamente opaco*/
+    backdrop-filter: blur(10px);
+    /*backdrop-filter: aplica efectos visuales a todo lo que está detrás del elemento, sin afectar el contenido del propio elemento.*/
+    /*blur(10px) aplica un desenfoque de 10 píxeles al fondo que se ve a través del elemento. Cuanto mayor es el número, más borroso será el fondo.*/
+    /*blur(10px): Aunque no mide un tamaño físico como un div, los píxeles determinan la “distancia de difuminado” de cada punto del fondo. Así que blur(10px) significa que cada píxel se mezcla con los píxeles que están a 10px alrededor.*/
+    /*padding: 1rem 2rem;*/
+    /*box-shadow: 0 4px 16px rgba(0,0,0,0.25);*/
+    /*z-index: 999;*/
+}
+
+.form-disponibilidad {
+    display: flex;
+    /*organiza los elementos hijos en fila (flex-direction: row por defecto).*/
+    flex-wrap: wrap;
+    /*permite que los flex items se “rompan” en varias filas cuando no caben horizontalmente. Es muy útil para formularios y barras de navegación responsivas, porque evita que los elementos se vean apretados en pantallas pequeñas.*/
+    justify-content: center;
+    align-items: flex-end;
+    /*Todos los campos e inputs se alinean a la misma línea inferior del contenedor. Esto hace que el botón y los inputs queden visualmente nivelados, incluso si tienen alturas distintas.*/
+    gap: 1rem;
+    /*rem = “root em” → unidad relativa al tamaño de fuente del <html>. Normalmente, el tamaño de fuente del <html> es 16px.*/
+    max-width: 1000px;
+    /*En pantallas más grandes que 1000px de ancho, el formulario no se estira más allá de eso, para que siga viéndose centrado y estético. En pantallas más pequeñas, el formulario puede encogerse hasta ocupar menos que 1000px (si no hay un width fijo).*/
+    margin: 0 auto;
+    /*lo centra horizontalmente en la pantalla, dejando espacios iguales a los lados.*/
+}
+
+.campo {
+    display: flex;
+    /*Sus hijos (label e input) se vuelven flex items y pueden organizarse fácilmente.*/
+    flex-direction: column;
+    /*Los elementos dentro de .campo se organizan verticalmente, uno debajo del otro. Esto hace que el label quede arriba y el input debajo.*/
+    flex: 1;
+    /*Permite que cada .campo crezca de forma proporcional dentro de su contenedor padre (.form-disponibilidad). Ejemplo: si hay 3 campos en la misma fila, todos se expandirán igualmente para llenar el espacio disponible.*/
+    min-width: 150px;
+    /*Cada campo no puede ser más estrecho de 150px, aunque el contenedor padre sea muy pequeño. Esto asegura que los inputs sigan siendo legibles en pantallas pequeñas.*/
+}
+
+.campo label {
+    font-weight: 400;
+    /*Hace que el texto del label sea semi-negrita, para que se vea más destacado que el input.*/
+    margin-bottom: 0.3rem;
+    /*Espacio entre el label y el input debajo, separándolos visualmente. 0.3rem = 0.3 veces el tamaño de fuente raíz (aprox. 4.8px si 1rem = 16px).*/
+    color: #f5eadb;
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    text-transform: uppercase;
+}
+
+.campo input {
+    padding: 0.2rem;
+    /*Espacio interno dentro del input, arriba, abajo, izquierda y derecha*/
+    border: none;
+    font-size: 1rem;
+    color: #03453d;
+}
+
+.btn-buscar {
+   background-color: rgba(255, 255, 255, 0);
+   color: #f5eadb;
+   border-width: 0.1rem;
+   border-radius: 0.5rem;
+   padding: 0.8rem 1.5rem;
+   font-size: 1rem;
+   cursor: pointer;
+   /*flex-shrink: 0;*/
+   transition: background-color 0.3s ease;
+
+}
+
+.btn-buscar:hover {
+    background-color: #0a574e94;
+}
+
 
 main {
     text-align: center;
@@ -169,6 +253,6 @@ footer {
 }
 
 .social-links a:hover {
-  fill: #0a574e94;
-  transform: scale(1.1);
+    fill: #0a574e94;
+    transform: scale(1.1);
 }
