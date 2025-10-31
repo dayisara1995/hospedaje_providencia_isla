@@ -19,8 +19,8 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     /*text-align: center; /* organiza los elementos interiores centradamente*/
-    /* position: relative;
-    overflow: hidden; */
+    /*position: relative;
+    overflow: hidden;*/
 }
 
 nav {
@@ -30,7 +30,7 @@ nav {
     height: 60px;
     padding: 5px 25px;
     box-sizing: border-box;
-    background-color: rgba(253, 245, 235, 0.745);
+    background-color: rgb(253, 245, 235);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,7 +67,8 @@ nav li a:hover {
 }
 
 .barra-reservas {
-    position: fixed; /*antes tenia absolute*/
+    position: fixed;
+    /*antes tenia absolute*/
     top: 60px;
     /* justo debajo del nav */
     width: 100%;
@@ -81,6 +82,15 @@ nav li a:hover {
     /*padding: 1rem 2rem;*/
     /*box-shadow: 0 4px 16px rgba(0,0,0,0.25);*/
     /*z-index: 999;*/
+    transition: transform 0.2s ease;
+    /*Cada vez que cambie la propiedad transform, la animación dura 0.3 segundos y es suave (ease). */
+    /*...Esto permite que cuando la barra se mueva (por ejemplo, salga hacia arriba), el movimiento se vea fluido y no brusco.*/
+}
+
+.barra-reservas.hidden {
+    transform: translateY(-100%);
+    /* translateY(-100%) mueve el elemento hacia arriba el 100% de su propia altura, es decir, fuera de la pantalla.*/
+    /*Como tiene la transición definida, la barra se desliza suavemente hacia arriba al aplicarse la clase .hidden.*/
 }
 
 .form-disponibilidad {
@@ -129,20 +139,21 @@ nav li a:hover {
 }
 
 .btn-buscar {
-   background-color: rgba(255, 255, 255, 0);
-   color: #f5eadb;
-   border-width: 0.1rem;
-   border-radius: 0.5rem;
-   padding: 0.8rem 1.5rem;
-   font-size: 1rem;
-   cursor: pointer;
-   /*flex-shrink: 0;*/
-   transition: background-color 0.3s ease;
+    background-color: #f5eadb91;
+    color: #03453d;
+    border-width: 0.1rem;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    /*flex-shrink: 0;*/
+    transition: background-color 0.3s ease;
 
 }
 
 .btn-buscar:hover {
     background-color: #0a574e94;
+    color: #f5eadb;
 }
 
 

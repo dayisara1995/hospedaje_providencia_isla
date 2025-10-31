@@ -80,7 +80,7 @@ nav {
     height: 60px;
     padding: 5px 25px;
     box-sizing: border-box;
-    background-color: rgba(253, 245, 235, 0.745);
+    background-color: rgb(253, 245, 235);
     display: flex;
     justify-content: space-between;
     align-items: center;
