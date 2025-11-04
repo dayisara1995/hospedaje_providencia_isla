@@ -1,26 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bad+Script&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Handlee&display=swap');
+
 body {
     margin: 0;
     padding: 0;
-    line-height: 1.5;
+    line-height: 1.6;
     background-color: rgba(253, 245, 235, 1);
     color: rgb(77, 75, 75);
-    /*font-family: "Amatic SC", sans-serif;
-    font-weight: 800; controla el grosor de las letras, es decir, qué tan negrita o delgada se ve una fuente*/
+    font-family: "Cormorant Garamond", serif;
+    /*font-weight: 800; controla el grosor de las letras, es decir, qué tan negrita o delgada se ve una fuente*/
 }
 
 
 header {
-    height: 100vh;
-    /*viewport height. 100% de la altura total de la ventana del navegador*/
-    /*padding: 20px 30px;*/
+    position: relative;
+    min-height: 100dvh;
+    /* Usamos min-height:100dvh en lugar de 100vh porque en móviles (iOS/Android) la altura del viewport cambia cuando aparece la barra del navegador. "dvh" = dynamic viewport height → evita saltos/brincos de layout. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: rgba(253, 245, 235, 1);
     background-image: url(../imagenes/kitty_warf.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /*text-align: center; /* organiza los elementos interiores centradamente*/
-    /*position: relative;
-    overflow: hidden;*/
+    /*overflow: hidden;*/
+}
+
+header .texto-header {
+    position: relative;
+    text-align: center;
+    width: 40%;
+    padding-right: 5%;
+    color: rgba(253, 245, 235, 0.904);
+}
+
+.texto-header h1 {
+    font-weight: 600;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.3rem;
+    letter-spacing: 0.1rem;
+    word-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* "inset:0" es shorthand de top/right/bottom/left = 0; estira el pseudo elemento para cubrir todo el header */
+    background: #000;
+    /* color del overlay */
+    opacity: .30;
+    /* para quitar brillo */
+    pointer-events: none;
+    /* que no bloquee click */
 }
 
 nav {
@@ -28,6 +61,7 @@ nav {
     /*fixed se queda siempre visible respecto a la ventana, mientras que sticky solo se pega dentro de su contenedor al hacer scroll.*/
     top: 0;
     height: 60px;
+    width: 100%;
     padding: 5px 25px;
     box-sizing: border-box;
     background-color: rgb(253, 245, 235);
@@ -38,16 +72,14 @@ nav {
 }
 
 nav img {
-    /*height: 16%;*/
-    width: 12%;
-    filter: contrast(200%) saturate(70%);
-    padding: 5px;
-    /*background-color: rgba(255, 255, 255, 0.822)*/
+    height: 45px; /* usar height fijo evita que el logo se vuelva muy pequeño en mobile con %, antes no tenía definido el height y width estaba en 12% */
+    width: auto;
+    filter: contrast(150%) saturate(100%);
 }
 
 nav ul {
     display: flex;
-    gap: 35px;
+    gap: 50px;
     /*espacio entre elementos*/
     list-style: none;
 }
@@ -56,14 +88,15 @@ nav li a {
     padding: 10px;
     text-decoration: none;
     /*text-transform: uppercase;*/
-    font-size: 17px;
-    color: #03453d;
+    font-size: 18px;
+    font-weight: 600;
+    color: #26382b;
 }
 
 nav li a:hover {
-    border-bottom: 1px solid #3d423c;
-    color: #3d423c;
-    background-color: #3d423c0c;
+    border-bottom: 1.5px solid #26382b;
+    color: #26382b;
+    font-weight: 900;
 }
 
 .barra-reservas {
@@ -125,8 +158,11 @@ nav li a:hover {
     /*Hace que el texto del label sea semi-negrita, para que se vea más destacado que el input.*/
     margin-bottom: 0.3rem;
     /*Espacio entre el label y el input debajo, separándolos visualmente. 0.3rem = 0.3 veces el tamaño de fuente raíz (aprox. 4.8px si 1rem = 16px).*/
-    color: #f5eadb;
-    font-family: "Alumni Sans Pinstripe", sans-serif;
+    color: rgba(253, 245, 235, 1);
+    font-family: "Cormorant Garamond", serif;
+    /*Antes: font-family: "Alumni Sans Pinstripe", sans-serif;*/
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
     text-transform: uppercase;
 }
 
@@ -135,12 +171,12 @@ nav li a:hover {
     /*Espacio interno dentro del input, arriba, abajo, izquierda y derecha*/
     border: none;
     font-size: 1rem;
-    color: #03453d;
+    color: #26382b;
 }
 
 .btn-buscar {
-    background-color: #f5eadb91;
-    color: #03453d;
+    background-color: #ffd979c5;
+    color: #26382b;
     border-width: 0.1rem;
     border-radius: 0.5rem;
     padding: 0.8rem 1.5rem;
@@ -152,20 +188,21 @@ nav li a:hover {
 }
 
 .btn-buscar:hover {
-    background-color: #0a574e94;
-    color: #f5eadb;
+    background-color: #ffd879;
+    color: #26382b;
 }
 
 
 main {
     text-align: center;
-    /*padding: 20px;*/
+    padding: 3rem;
+    width: 100%;
     /*box-sizing: border-box; /*incluye padding dentro del ancho*/
 }
 
 h2,
 p {
-    max-width: 70%;
+    max-width: 50%;
     /*ajusta el ancho del elemento en relacion a la pantalla  y que no sea fijo*/
     /*min-width: ;*/
     margin: 30px auto;
@@ -173,11 +210,12 @@ p {
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 26px;
 }
 
 p {
     font-size: 18px;
+    max-width: 40%;
 }
 
 .galeria-isla {
@@ -186,7 +224,6 @@ p {
     /* centra horizontalmente */
     align-items: center;
     /* centra verticalmente */
-    gap: 5px;
     flex-wrap: nowrap;
     /* permite que se acomoden si el espacio es pequeño */
     width: 70vw;
@@ -196,19 +233,19 @@ p {
 }
 
 .galeria-isla img {
-    width: 33.33%;
+    width: 50%;
     /* cada imagen ocupa el 33% del ancho disponible */
-    height: 300px;
+    height: 500px;
     /*max-width: 100%;*/
-    padding: 5px;
+    padding: 10px;
     object-fit: cover;
+    filter: brightness(0.8);
 }
 
 .galeria-alojamiento {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
     flex-wrap: nowrap;
     /* permite que se acomoden si el espacio es pequeño */
     width: 70vw;
@@ -217,11 +254,12 @@ p {
 }
 
 .galeria-alojamiento img {
-    width: 25%;
-    height: 300px;
+    width: 50%;
+    height: 500px;
     /*max-width: 100%;*/
-    padding: 5px;
+    padding: 10px;
     object-fit: cover;
+    filter: brightness(0.8);
 }
 
 footer {
@@ -266,4 +304,42 @@ footer {
 .social-links a:hover {
     fill: #0a574e94;
     transform: scale(1.1);
+}
+
+
+/* botón hamburguesa. Solo se mostrará en mobile, por eso display:none en desktop */
+.nav-toggle {
+    display: none; /* oculto en desktop */
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    /* mostrar botón hamburguesa */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* ocultar links por defecto */
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px; /* misma altura del nav */
+        right: 0;
+        background-color: rgb(253, 245, 235);
+        flex-direction: column;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+        gap: 25px;
+    }
+
+    /* el logo que no se vuelva diminuto */
+    nav img {
+        height: 35px;
+    }
 }
