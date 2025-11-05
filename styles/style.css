@@ -29,18 +29,19 @@ header {
 header .texto-header {
     position: relative;
     text-align: center;
-    width: 40%;
+    width: 35%;
     padding-right: 5%;
-    color: rgba(253, 245, 235, 0.904);
+    color: rgba(253, 245, 235, 0.705);
 }
 
 .texto-header h1 {
-    font-weight: 600;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 2.3rem;
+    font-weight: 400;
+    /*font-family: "Cormorant Garamond", serif;*/
+    font-family: "Bad Script", cursive;
+    font-size: 2.6rem;
     letter-spacing: 0.1rem;
-    word-spacing: 0.1rem;
-    text-transform: uppercase;
+    word-spacing: 0.4rem;
+    /*text-transform: uppercase;*/
 }
 
 header::before {
@@ -72,7 +73,8 @@ nav {
 }
 
 nav img {
-    height: 45px; /* usar height fijo evita que el logo se vuelva muy pequeño en mobile con %, antes no tenía definido el height y width estaba en 12% */
+    height: 45px;
+    /* usar height fijo evita que el logo se vuelva muy pequeño en mobile con %, antes no tenía definido el height y width estaba en 12% */
     width: auto;
     filter: contrast(150%) saturate(100%);
 }
@@ -99,6 +101,7 @@ nav li a:hover {
     font-weight: 900;
 }
 
+/* Barra de reservas en desktop y dispositivos grandes */
 .barra-reservas {
     position: fixed;
     /*antes tenia absolute*/
@@ -126,6 +129,7 @@ nav li a:hover {
     /*Como tiene la transición definida, la barra se desliza suavemente hacia arriba al aplicarse la clase .hidden.*/
 }
 
+/* Formulario de disponibilidad */
 .form-disponibilidad {
     display: flex;
     /*organiza los elementos hijos en fila (flex-direction: row por defecto).*/
@@ -142,6 +146,7 @@ nav li a:hover {
     /*lo centra horizontalmente en la pantalla, dejando espacios iguales a los lados.*/
 }
 
+/* Cada campo (label + input) */
 .campo {
     display: flex;
     /*Sus hijos (label e input) se vuelven flex items y pueden organizarse fácilmente.*/
@@ -166,6 +171,7 @@ nav li a:hover {
     text-transform: uppercase;
 }
 
+/* Estilos del input */
 .campo input {
     padding: 0.2rem;
     /*Espacio interno dentro del input, arriba, abajo, izquierda y derecha*/
@@ -178,7 +184,7 @@ nav li a:hover {
     background-color: #ffd979c5;
     color: #26382b;
     border-width: 0.1rem;
-    border-radius: 0.5rem;
+    border-radius: 0;
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
     cursor: pointer;
@@ -307,9 +313,12 @@ footer {
 }
 
 
+
+
 /* botón hamburguesa. Solo se mostrará en mobile, por eso display:none en desktop */
 .nav-toggle {
-    display: none; /* oculto en desktop */
+    display: none;
+    /* oculto en desktop */
     background: none;
     border: none;
     font-size: 32px;
@@ -328,9 +337,11 @@ footer {
     nav ul {
         display: none;
         position: absolute;
-        top: 60px; /* misma altura del nav */
+        top: 60px;
+        /* misma altura del nav */
         right: 0;
         background-color: rgb(253, 245, 235);
+        /*PENDIENTE REVISAR ESTE COLOR*/
         flex-direction: column;
         width: 100%;
         padding: 15px 0;
@@ -342,4 +353,216 @@ footer {
     nav img {
         height: 35px;
     }
+
+    header .texto-header {
+        padding-top: 20%;
+        width: 80%;
+    }
+
+    .texto-header h1 {
+        font-size: 2.2rem;
+    }
+
+
+    /* MOBILE: barra de reservas simplificada → solo botón */
+    .barra-reservas {
+        top: 60px;
+        /* debajo del nav */
+        position: fixed;
+        width: 100%;
+        padding: 0;
+        /*border-radius: 0;*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        /* asegurar que quede encima del contenido */
+    }
+
+    /* Para que el form ocupe todo el ancho disponible */
+    .form-disponibilidad {
+        width: 100%;
+        max-width: none;
+        /* anular max-width de desktop (1000px) */
+        display: flex;
+        /* sigue siendo flex para que el botón sea flex-child */
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        gap: 0;
+        /* sin gap para que el botón ocupe todo */
+    }
+
+    /* ocultar los campos en mobile */
+    .form-disponibilidad .campo {
+        display: none;
+    }
+
+    /* El botón visible y ocupando todo (debe ser el flex-child que se estira) */
+    .btn-buscar {
+        flex: 1;
+        /* ocupa todo el espacio disponible dentro del form */
+        width: auto;
+        /* no forzamos width (flex controlará) */
+        max-width: none;
+        /* eliminar límites anteriores */
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-radius: 0;
+        border-style: none;
+    }
+
+    /* en mobile no queremos auto-hide por scroll */
+    .barra-reservas.hidden {
+        transform: none !important;
+    }
+
+    
+/*REVISAR DESDE AQUI HACIA ABAJO*/
+main {
+    width: 100%;
+    padding: 0 0;
+}
+
+h2,
+p {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 0 1rem;
+    /* para que no pegue el texto a los bordes */
+}
+
+h2 {
+    font-size: 28px;
+}
+
+p {
+    font-size: 22px;
+}
+
+.galeria-isla,
+.galeria-alojamiento {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* 1 columna en mobile */
+    gap: 1rem;
+    padding: 0 1rem;
+    margin: 0 0;
+}
+
+.galeria-isla img,
+.galeria-alojamiento img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+}
+
+
+/*
+main {
+    text-align: center;
+    padding: 3rem;
+    width: 100%;
+    /*box-sizing: border-box; /*incluye padding dentro del ancho
+}
+
+h2,
+p {
+    max-width: 50%;
+    /*ajusta el ancho del elemento en relacion a la pantalla  y que no sea fijo
+    /*min-width: ;
+    margin: 30px auto;
+    /*centra el main horizontalmente 
+}
+
+h2 {
+    font-size: 26px;
+}
+
+p {
+    font-size: 18px;
+    max-width: 40%;
+}*/
+
+
+/* MODAL GENERAL (base, oculto por defecto) */
+.modal-disponibilidad {
+    display: none;
+    position: fixed;
+    /*se queda fijo aunque haga scroll.*/
+    inset: 0;
+    /*es lo mismo que poner top:0; right:0; bottom:0; left:0; ocupa TODA la pantalla.*/
+    background: rgba(0, 0, 0, 0.4);
+    /*fondo negro con 40% de opacidad*/
+    backdrop-filter: blur(3px);
+    /*desenfoca lo que está detrás.*/
+    justify-content: center;
+    align-items: center;
+    /*centra el contenido del modal (la caja beige).*/
+    z-index: 9999;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.modal-disponibilidad.activo {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* caja interna del modal */
+.modal-contenido {
+    background-color: rgba(253, 245, 235, 0.95);
+    padding: 2rem;
+    border-radius: 0;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    /*necesario para posicionar la X dentro.*/
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* botón cerrar */
+.btn-cerrar-modal {
+    position: absolute;
+    top: 1rem;
+    right: .5rem;
+    background: transparent;
+    /*sin fondo*/
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.titulo-modal {
+    margin: 2rem 0;
+    max-width: 100%;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.modal-contenido .campo label {
+    margin-bottom: 0.3rem;
+    /*Espacio entre el label y el input debajo, separándolos visualmente. 0.3rem = 0.3 veces el tamaño de fuente raíz (aprox. 4.8px si 1rem = 16px).*/
+    font-weight: 400;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.2rem;
+    color: #26382b;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.modal-contenido .campo input {
+    padding: 0.2rem;
+    /*Espacio interno dentro del input, arriba, abajo, izquierda y derecha*/
+    border: none;
+    font-size: 1.2rem;
+    color: #26382b;
 }

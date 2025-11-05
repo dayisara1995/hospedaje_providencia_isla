@@ -27,3 +27,51 @@ window.addEventListener('scroll', () => {
         barraReservas.classList.remove('hidden'); // dentro del header
     }
 });
+
+
+// -------------------------
+// ANTES: MODAL DISPONIBILIDAD
+// -------------------------
+/*btnBuscar.addEventListener('click', function(e) {
+    e.preventDefault();
+    // si es DESKTOP → no mostrar modal
+    if (window.innerWidth > 768) return;
+    // si es MOBILE → abrir modal
+    modal.style.display = 'flex';
+});
+
+// cuando se hace click en "Continuar"
+btnContinuar.addEventListener('click', function() {
+    modal.style.display = 'none';
+});
+
+// cerrar modal con X
+btnCerrarModal.addEventListener('click', function(){
+    modal.style.display = 'none';
+});*/
+
+
+// MODAL DISPONIBILIDAD
+const modal = document.getElementById('modal-disponibilidad');
+const btnBuscar = document.querySelector('.btn-buscar');
+const btnContinuar = document.querySelector('.btn-continuar');
+const btnCerrarModal = document.querySelector('.btn-cerrar-modal');
+
+// abrir solo si es mobile
+btnBuscar.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+        e.preventDefault();
+        modal.classList.add('activo');
+    }
+});
+
+// cerrar con X
+btnCerrarModal.addEventListener('click', function() {
+    modal.classList.remove('activo');
+});
+
+// cerrar con continuar
+btnContinuar.addEventListener('click', function() {
+    modal.classList.remove('activo');
+});
+

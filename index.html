@@ -20,6 +20,7 @@
                 <!--<form>: define un formulario HTML, donde el usuario ingresará datos.-->
                 <!--action="#": indica la URL a la que se enviarán los datos cuando el usuario presione “Buscar”. # es un placeholder, se usa mientras no haya un backend conectado.-->
                 <!--method="get": define el método de envío de los datos: get: los datos se envían en la URL, como parámetros (ej.: ?checkin=2025-10-28&checkout=2025-10-30).-->
+
                 <div class="campo">
                     <label for="checkin">Check in</label>
                     <!--for="checkin" conecta el label con el input que tiene id="checkin"; al hacer clic en el texto, el cursor se enfoca en el input.-->
@@ -29,12 +30,10 @@
                     <!--name="checkin" → nombre del campo que se enviará al servidor.-->
                     <!--required → obliga al usuario a completar el campo antes de enviar el formulario.-->
                 </div>
-
                 <div class="campo">
                     <label for="checkout">Check out</label>
                     <input type="date" id="checkout" name="checkout" required>
                 </div>
-
                 <div class="campo">
                     <label for="huespedes">Huéspedes</label>
                     <input type="number" id="huespedes" name="huespedes" min="1" value="2" required>
@@ -46,6 +45,33 @@
                 <button type="submit" class="btn-buscar">Ver disponibilidad</button>
                 <!--type="submit": al hacer clic, envía los datos del formulario al servidor o a la URL indicada en action.-->
             </form>
+        </div>
+
+        <!-- MODAL -->
+        <div id="modal-disponibilidad" class="modal-disponibilidad">
+            <div class="modal-contenido">
+
+                <!-- botón cerrar -->
+                <button class="btn-cerrar-modal">X</button>
+
+                <h2 class="titulo-modal">Seleccione sus fechas</h2>
+
+                <div class="campo">
+                    <label for="modal-checkin">Check in</label>
+                    <input type="date" id="modal-checkin" name="checkin" required>
+                </div>
+                <div class="campo">
+                    <label for="modal-checkout">Check out</label>
+                    <input type="date" id="modal-checkout" name="checkout" required>
+                </div>
+                <div class="campo">
+                    <label for="modal-huespedes">Huéspedes</label>
+                    <input type="number" id="modal-huespedes" name="huespedes" min="1" value="2" required>
+                </div>
+
+                <!-- botón continuar -->
+                <button class="btn-continuar">Continuar</button>
+            </div>
         </div>
     </header>
 
