@@ -1,8 +1,36 @@
+/* ===== Font Import ===== */
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bad+Script&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Handlee&display=swap');
 
+
+/* ===== Selector universal ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /* todos los elementos (y sus pseudo elementos) van a medir su width y height incluyendo el padding y el border */
+}
+
+
+/* ===== Tamaño base ===== */
+html {
+    font-size: 16px;
+    /* Base para rem */
+}
+
+@media (max-width: 768px) {
+
+    html {
+        font-size: 14px;
+        /* Escala en móviles */
+    }
+}
+
+
+/* ===== Body ===== */
 body {
     margin: 0;
-    padding: 0;
+    padding-top: 60px;
+    /* coincide con height del nav. Esto asegura que todo el sitio arranque por debajo del nav */
     line-height: 1.6;
     background-color: rgba(253, 245, 235, 1);
     color: rgb(77, 75, 75);
@@ -11,10 +39,11 @@ body {
 }
 
 
+/* ===== Header ===== */
 header {
     position: relative;
     min-height: 100dvh;
-    /* Usamos min-height:100dvh en lugar de 100vh porque en móviles (iOS/Android) la altura del viewport cambia cuando aparece la barra del navegador. "dvh" = dynamic viewport height → evita saltos/brincos de layout. */
+    /* Altura dinámica para móviles - PENDIENTE AMPLIAR CONCEPTO*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,9 +52,20 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /*overflow: hidden;*/
 }
 
+/* Overlay */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* "inset:0" es shorthand de top/right/bottom/left = 0; estira el pseudo elemento para cubrir todo el header */
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    /* que no bloquee click */
+}
+
+/* Texto del header */
 header .texto-header {
     position: relative;
     text-align: center;
@@ -34,63 +74,53 @@ header .texto-header {
     color: rgba(253, 245, 235, 0.705);
 }
 
+/* H1 del header */
 .texto-header h1 {
-    font-weight: 400;
-    /*font-family: "Cormorant Garamond", serif;*/
     font-family: "Bad Script", cursive;
+    font-weight: 400;
     font-size: 2.6rem;
+    /* ~41.6px en desktop */
     letter-spacing: 0.1rem;
     word-spacing: 0.4rem;
-    /*text-transform: uppercase;*/
 }
 
-header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    /* "inset:0" es shorthand de top/right/bottom/left = 0; estira el pseudo elemento para cubrir todo el header */
-    background: #000;
-    /* color del overlay */
-    opacity: .30;
-    /* para quitar brillo */
-    pointer-events: none;
-    /* que no bloquee click */
-}
 
+/* ===== Nav ===== */
 nav {
     position: fixed;
     /*fixed se queda siempre visible respecto a la ventana, mientras que sticky solo se pega dentro de su contenedor al hacer scroll.*/
     top: 0;
     height: 60px;
     width: 100%;
-    padding: 5px 25px;
+    padding: .2rem 1.56rem;
     box-sizing: border-box;
     background-color: rgb(253, 245, 235);
+    /*border-bottom: 2px solid rgb(196, 172, 212);*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*border-bottom: 2px solid rgb(196, 172, 212);*/
+    z-index: 1000;
 }
 
 nav img {
     height: 45px;
-    /* usar height fijo evita que el logo se vuelva muy pequeño en mobile con %, antes no tenía definido el height y width estaba en 12% */
+    /* usar height fijo evita que el logo se vuelva muy pequeño en mobile con % */
     width: auto;
     filter: contrast(150%) saturate(100%);
 }
 
 nav ul {
     display: flex;
-    gap: 50px;
+    gap: 3rem;
     /*espacio entre elementos*/
     list-style: none;
 }
 
 nav li a {
-    padding: 10px;
+    padding: .6rem;
     text-decoration: none;
     /*text-transform: uppercase;*/
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #26382b;
 }
@@ -98,10 +128,22 @@ nav li a {
 nav li a:hover {
     border-bottom: 1.5px solid #26382b;
     color: #26382b;
-    font-weight: 900;
+    letter-spacing: .5px;
+    /* pequeño acento sin mover layout */
 }
 
-/* Barra de reservas en desktop y dispositivos grandes */
+/* botón hamburguesa. Solo se mostrará en mobile, por eso display:none en desktop */
+.nav-toggle {
+    display: none;
+    /* oculto en desktop */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+/* ===== Barra de reservas ===== */
 .barra-reservas {
     position: fixed;
     /*antes tenia absolute*/
@@ -180,9 +222,11 @@ nav li a:hover {
     color: #26382b;
 }
 
+/* Boton */
 .btn-buscar {
     background-color: #ffd979c5;
     color: #26382b;
+    border-color: #ffd879;
     border-width: 0.1rem;
     border-radius: 0;
     padding: 0.8rem 1.5rem;
@@ -190,7 +234,6 @@ nav li a:hover {
     cursor: pointer;
     /*flex-shrink: 0;*/
     transition: background-color 0.3s ease;
-
 }
 
 .btn-buscar:hover {
@@ -199,105 +242,97 @@ nav li a:hover {
 }
 
 
+/* ===== Main ===== */
 main {
     text-align: center;
-    padding: 3rem;
+    padding: 2rem auto;
     width: 100%;
-    /*box-sizing: border-box; /*incluye padding dentro del ancho*/
+    box-sizing: border-box;
+    /* incluye padding dentro del ancho */
 }
 
+
+/* Títulos y párrafos */
 h2,
 p {
-    max-width: 50%;
-    /*ajusta el ancho del elemento en relacion a la pantalla  y que no sea fijo*/
-    /*min-width: ;*/
-    margin: 30px auto;
+    max-width: 50rem;
+    /* ancho máximo en desktop */
+    margin: 2rem auto;
     /*centra el main horizontalmente */
 }
 
 h2 {
-    font-size: 26px;
+    font-size: 2rem;
+    /* ~32px */
 }
 
 p {
-    font-size: 18px;
-    max-width: 40%;
+    font-size: 1.25rem;
+    /* ~20px */
+    max-width: 40rem;
 }
 
-.galeria-isla {
+/* Galerías */
+.galeria-isla,
+.galeria-alojamiento {
     display: flex;
     justify-content: center;
     /* centra horizontalmente */
     align-items: center;
     /* centra verticalmente */
     flex-wrap: nowrap;
-    /* permite que se acomoden si el espacio es pequeño */
+    /* evita que las imágenes bajen si no caben */
+    gap: .2rem;
     width: 70vw;
-    /* ocupa todo el ancho visible de la pantalla */
-    /*box-sizing: border-box; /* incluye padding/border dentro del ancho total */
-    margin: 15px auto;
+    margin: 1rem auto;
 }
 
-.galeria-isla img {
-    width: 50%;
-    /* cada imagen ocupa el 33% del ancho disponible */
-    height: 500px;
-    /*max-width: 100%;*/
-    padding: 10px;
-    object-fit: cover;
-    filter: brightness(0.8);
-}
-
-.galeria-alojamiento {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    /* permite que se acomoden si el espacio es pequeño */
-    width: 70vw;
-    /*box-sizing: border-box; /* incluye padding/border dentro del ancho total */
-    margin: 15px auto
-}
-
+.galeria-isla img,
 .galeria-alojamiento img {
-    width: 50%;
-    height: 500px;
-    /*max-width: 100%;*/
-    padding: 10px;
+    width: 48%;
+    /* cada imagen ocupa el 48% del ancho disponible */
+    aspect-ratio: 4/3;
+    /* mantiene proporción, en vez de definir height en pixeles (puede distorsionar) */
+    padding: 5px;
     object-fit: cover;
     filter: brightness(0.8);
+    border-radius: .5rem;
+    /* suaviza esquinas en todas las imágenes */
 }
 
+
+/* ===== Footer ===== */
 footer {
     background-color: #f5eadb;
-    padding: 30px;
+    padding: 2rem;
+    font-size: 1.25rem;
 }
 
-/*PENDIENTE quitar subrayado links*/
+/* Contenedor principal */
+#contenedor-caja-footer {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
 
+#contenedor-caja-footer a {
+    text-decoration: none;
+    color: inherit;
+    /*color: inherit; = “hereda el color del padre”.*/
+}
+
+/* Contenedores información y contacto */
+#caja-informacion,
+#caja-contacto {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    /*white-space: nowrap; /* Propiedad que vi en chatGPT para evitar salto de línea */
+}
 
 .contacto svg {
     width: 20px;
     height: 20px;
-}
-
-/* Footer organizado con Flex*/
-#contenedor-caja-footer {
-    display: flex;
-    justify-content: center;
-    gap: 90px;
-}
-
-#caja-informacion {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-}
-
-#caja-contacto {
-    display: flex;
-    flex-direction: column;
-    /*white-space: nowrap; /*Propiedad: valor; ---Propiedad que vi en chatGPT para evitar salto de línea */
 }
 
 .social-links a {
@@ -313,40 +348,58 @@ footer {
 }
 
 
+/* ===== Media Queries ===== */
 
-
-/* botón hamburguesa. Solo se mostrará en mobile, por eso display:none en desktop */
-.nav-toggle {
-    display: none;
-    /* oculto en desktop */
-    background: none;
-    border: none;
-    font-size: 32px;
-    cursor: pointer;
+/* Tablets medianos */
+@media (max-width: 1024px) {
+    header .texto-header {
+        width: 50%;
+        padding-right: 2%;
+    }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
 
-    /* mostrar botón hamburguesa */
+    /* ========= Header ========== */
+    header .texto-header {
+        width: 90%;
+        padding-right: 0;
+    }
+
+    .texto-header h1 {
+        font-size: 2rem;
+        /* ~28px */
+        letter-spacing: 0.05rem;
+        word-spacing: 0.2rem;
+    }
+
+    /* ========= Nav ========== */
+    /* mostrar hamburguesa */
     .nav-toggle {
         display: block;
     }
 
-    /* ocultar links por defecto */
+    /* el UL se oculta por defecto en mobile */
     nav ul {
         display: none;
         position: absolute;
         top: 60px;
-        /* misma altura del nav */
+        /* coincide con height del nav */
         right: 0;
-        background-color: rgb(253, 245, 235);
-        /*PENDIENTE REVISAR ESTE COLOR*/
-        flex-direction: column;
         width: 100%;
-        padding: 15px 0;
+        padding: 20px 0;
+        margin: 0;
+        gap: 1.5rem;
+        background-color: rgb(253, 245, 235);
+        flex-direction: column;
         text-align: center;
-        gap: 25px;
+    }
+
+    /* cuando está activo → se muestra */
+    nav ul.active {
+        display: flex;
+        z-index: 1100;
+        /*PENDIENTE ESTUDIAR ESTO .ACTIVE*/
     }
 
     /* el logo que no se vuelva diminuto */
@@ -354,17 +407,7 @@ footer {
         height: 35px;
     }
 
-    header .texto-header {
-        padding-top: 20%;
-        width: 80%;
-    }
-
-    .texto-header h1 {
-        font-size: 2.2rem;
-    }
-
-
-    /* MOBILE: barra de reservas simplificada → solo botón */
+    /* ========= Barra de reservas (simplificada → solo botón) ========== */
     .barra-reservas {
         top: 60px;
         /* debajo del nav */
@@ -375,7 +418,7 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 1000;
+        z-index: 999;
         /* asegurar que quede encima del contenido */
     }
 
@@ -417,79 +460,91 @@ footer {
         transform: none !important;
     }
 
-    
-/*REVISAR DESDE AQUI HACIA ABAJO*/
-main {
-    width: 100%;
-    padding: 0 0;
+    /* ========= Main ========== */
+    main {
+        padding: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    h2,
+    p {
+        max-width: 100%;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+        /* evita que el texto pegue al borde */
+    }
+
+    h2 {
+        font-size: 2rem;
+        /* ~28px */
+    }
+
+    p {
+        font-size: 1.28rem;
+        /* ~18px */
+    }
+
+    /* Galerías */
+    .galeria-isla,
+    .galeria-alojamiento {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* 1 columna en móviles */
+        gap: .4rem;
+        width: 100%;
+        margin: 1rem 0;
+        padding: 0;
+        /* <===== CLAVE: sin padding lateral para que NO se desborde */
+        box-sizing: border-box;
+    }
+
+    .galeria-isla img,
+    .galeria-alojamiento img {
+        width: 100%;
+        height: auto;
+        padding: 0;
+        box-sizing: border-box;
+        border-radius: .2rem;
+        object-fit: cover;
+        display: block;
+        /* <=== evita espacio fantasma de line-height */
+    }
+
+    /* ========= Footer ========== */
+    footer {
+        padding: 1.5rem 1rem;
+        text-align: center;
+    }
+
+    #contenedor-caja-footer {
+        flex-direction: column;
+        align-items: center;
+        /* centra todo */
+        gap: 2rem;
+    }
+
+    #contenedor-caja-footer h4 {
+        margin: .2rem;
+    }
+
+    #caja-informacion li,
+    #caja-contacto a {
+        margin: .4rem 1.4rem;
+    }
+
+    .social-links a {
+        width: 30px;
+        /* un poquito más grande para tocar con dedo */
+        margin: 1rem;
+    }
 }
 
-h2,
-p {
-    max-width: 100%;
-    margin: 20px auto;
-    padding: 0 1rem;
-    /* para que no pegue el texto a los bordes */
-}
 
-h2 {
-    font-size: 28px;
-}
-
-p {
-    font-size: 22px;
-}
-
-.galeria-isla,
-.galeria-alojamiento {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* 1 columna en mobile */
-    gap: 1rem;
-    padding: 0 1rem;
-    margin: 0 0;
-}
-
-.galeria-isla img,
-.galeria-alojamiento img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    object-fit: cover;
-}
-}
-
-
-/*
-main {
-    text-align: center;
-    padding: 3rem;
-    width: 100%;
-    /*box-sizing: border-box; /*incluye padding dentro del ancho
-}
-
-h2,
-p {
-    max-width: 50%;
-    /*ajusta el ancho del elemento en relacion a la pantalla  y que no sea fijo
-    /*min-width: ;
-    margin: 30px auto;
-    /*centra el main horizontalmente 
-}
-
-h2 {
-    font-size: 26px;
-}
-
-p {
-    font-size: 18px;
-    max-width: 40%;
-}*/
-
-
-/* MODAL GENERAL (base, oculto por defecto) */
+/* ========= MODAL ========== */
 .modal-disponibilidad {
     display: none;
+    /*oculto por defecto*/
     position: fixed;
     /*se queda fijo aunque haga scroll.*/
     inset: 0;
@@ -564,5 +619,24 @@ p {
     /*Espacio interno dentro del input, arriba, abajo, izquierda y derecha*/
     border: none;
     font-size: 1.2rem;
+    color: #26382b;
+}
+
+/* botón continuar */
+.btn-continuar {
+    background-color: #ffd979c5;
+    color: #26382b;
+    border-width: 0.1rem;
+    border-radius: 0;
+    border-color: #ffd879;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    /*flex-shrink: 0;*/
+    transition: background-color 0.3s ease;
+}
+
+.btn-continuar:hover {
+    background-color: #ffd879;
     color: #26382b;
 }

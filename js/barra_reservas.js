@@ -29,26 +29,13 @@ window.addEventListener('scroll', () => {
 });
 
 
-// -------------------------
-// ANTES: MODAL DISPONIBILIDAD
-// -------------------------
-/*btnBuscar.addEventListener('click', function(e) {
-    e.preventDefault();
-    // si es DESKTOP → no mostrar modal
-    if (window.innerWidth > 768) return;
-    // si es MOBILE → abrir modal
-    modal.style.display = 'flex';
-});
+//Nav
+const navToggle = document.querySelector(".nav-toggle");
+const navMenu = document.querySelector("nav ul");
 
-// cuando se hace click en "Continuar"
-btnContinuar.addEventListener('click', function() {
-    modal.style.display = 'none';
+navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
 });
-
-// cerrar modal con X
-btnCerrarModal.addEventListener('click', function(){
-    modal.style.display = 'none';
-});*/
 
 
 // MODAL DISPONIBILIDAD
