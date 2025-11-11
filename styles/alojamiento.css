@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bad+Script&family=Handlee&display=swap');
+/* ===== Font Import ===== */
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bad+Script&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Handlee&display=swap');
+
 
 /* ===== Selector universal ===== */
 *,
@@ -33,17 +34,15 @@ body {
 }
 
 
-/* ===== Header ===== */
+/* ===== Header general ===== */
 header {
     position: relative;
     max-width: 1280px;
     /* limite ancho en desktop */
     width: 100%;
-    /* siempre 100% */
     margin: 0 auto;
     /* centrar en desktop */
     padding: 5rem 8rem;
-    /* aire arriba y abajo */
     display: flex;
     flex-direction: column;
     /* coloca el contenido uno debajo del otro */
@@ -52,12 +51,6 @@ header {
     align-items: center;
     /* centra horizontalmente */
     text-align: center;
-}
-
-@media (max-width: 767px) {
-    header {
-        padding: 3rem 1.5rem;
-    }
 }
 
 header h1 {
@@ -78,42 +71,23 @@ header p {
     font-size: 1.25rem;
     /*~20px*/
     margin: 2rem 0;
+    /* centra el main horizontalmente */
     padding: 0 2rem;
-}
-
-
-/*
-h2,
-p {
     max-width: 50rem;
-    /* ancho máximo en desktop 
-    margin: 2rem auto;
-    /*centra el main horizontalmente 
+    /* ancho máximo en desktop */
 }
-
-h2 {
-    font-size: 2rem;
-    /* ~32px 
-}
-
-p {
-    font-size: 1.25rem;
-    /* ~20px 
-    max-width: 40rem;
-}*/
-
 
 header li {
     list-style: none;
 }
 
 
-/* Caja con lista en columnas */
+/* ===== Caja con lista ===== */
 .titulo-servicios-habitaciones {
     margin-top: 5rem;
 }
 
-/*Título*/
+/* Título */
 .titulo-servicios-habitaciones h3 {
     margin-bottom: 3rem;
     font-family: "Alumni Sans Pinstripe", sans-serif;
@@ -123,45 +97,36 @@ header li {
     color: #03453d;
     letter-spacing: 2px;
     word-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* Lista en columnas */
+/* Lista de servicios: 5 columnas en desktop */
 .listado-servicios-habitaciones {
     display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 3rem 2rem;
     padding: 0 2rem;
     margin: 0 auto;
-    list-style: none;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-/* Líneas solo en desktop */
-@media (min-width: 992px) {
-    .listado-servicios-habitaciones {
-        border-inline: 1px solid #b8aa9b;
-        padding-inline: 2rem;
-    }
 }
 
 .listado-servicios-habitaciones li {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.2rem;
-    padding-inline: 1.2rem;
+    gap: 1rem; /* espacio entre icono y texto reducido */
 }
 
 .listado-servicios-habitaciones svg {
-    width: 44px;
-    height: 44px;
-    flex-shrink: 0;
-    fill: #bbb;
+    width: 50px;
+    height: 50px;
+    fill: #03453d42;
 }
 
-/* Texto de cada item*/
 .listado-servicios-habitaciones p {
     font-size: 1rem;
-    margin: 0;
-    color: #03453d;
+    max-width: 15rem;
+    margin: 1rem 0;
+    padding: 0 1rem;
 }
 
 
@@ -223,62 +188,121 @@ nav li a:hover {
 }
 
 
-/* ===== Main ===== */
+/* ===== Main general ===== */
+main {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 0;
+}
+
 #wrapper {
-    width: 60%;
-    /*height: 100%;*/
-    margin: 10px auto;
-    /*border: 1px solid #d9d9d9;*/
+    width: 80%;
+    margin: 0 auto;
     padding: 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 40px;
 }
 
-.contenedor {
-    display: flex;
-    flex-direction: row;
-    /* align-items: center;
-    centra horizontalmente */
+
+/* ===== Labels de selección de habitación ===== */
+#wrapper label {
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.contenedor .cont {
-    width: 45%;
-    margin: auto 20px;
+#wrapper label:hover {
+    color: #03453d;
+    text-decoration: underline;
 }
 
-/*oculta inputs*/
 input[name="imagenes-habitaciones"] {
     position: absolute;
     left: -1000em;
 }
 
-/*estilo de label activo*/
-/*input[name="imagenes-habitaciones"]:checked + label {} ----afecta solo a los inputs con ese name*/
-/*Cuando un <input> está marcado (checked), aplica estos estilos al <label> que está inmediatamente después de él.*/
+/* Label activo */
 input:checked+label {
     text-decoration: underline;
     color: #03453d;
-    font-weight: 800;
+    font-weight: 700;
 }
 
-/*ocultar todos los contenedores por defecto*/
+
+/* ===== Contenedores ===== */
 .contenedor {
     display: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
 }
 
-/*mostrar contenedor 1 cuando radio 1 esté checked*/
-#esencial:checked~.contenedor:nth-of-type(1) {
+.contenedor .cont {
+    width: 45%;
+    text-align: left;
+}
+
+.contenedor .cont h3 {
+    font-size: 2rem;
+    color: #03453d;
+    margin-bottom: 1rem;
+}
+
+.contenedor .cont p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.contenedor .cont h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #03453d;
+}
+
+.contenedor .cont ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.contenedor .cont li {
+    position: relative;
+    margin-bottom: 0.4rem;
+}
+
+.contenedor .cont li::before {
+    content: "•";
+    color: #03453d;
+    position: absolute;
+    left: -1rem;
+}
+
+
+/* ===== Galería ===== */
+.galeria {
+    width: 45%;
     display: flex;
+    justify-content: center;
 }
 
-/*mostrar contenedor 2 cuando radio 2 esté checked*/
-#vistamar:checked~.contenedor:nth-of-type(2) {
-    display: flex;
+.galeria img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
-/*mostrar contenedor 3 cuando radio 3 esté checked*/
+
+/* ===== Mostrar contenedores según input checked ===== */
+#esencial:checked~.contenedor:nth-of-type(1),
+#vistamar:checked~.contenedor:nth-of-type(2),
 #familiar:checked~.contenedor:nth-of-type(3) {
     display: flex;
 }
@@ -331,37 +355,267 @@ footer {
 }
 
 
+/* ===== Media Queries ===== */
 
-/*-------------------------------------------------------------------------------------*/
+/* Tablet */
+@media (max-width: 1024px) {
+    header {
+        padding: 4rem 6rem;
+    }
 
-/* estilo del contenedor */
+    header h1 {
+        font-size: 3.5rem;
+    }
+
+    .titulo-servicios-habitaciones h3 {
+        font-size: 1.8rem;
+    }
+
+    /* 2 columnas en tablet */
+    .listado-servicios-habitaciones {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .listado-servicios-habitaciones svg {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    #wrapper {
+        width: 90%;
+    }
+
+    #wrapper label {
+        font-size: 1.1rem;
+        margin: 0 0.5rem;
+    }
+
+    .contenedor {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contenedor .cont,
+    .galeria {
+        width: 90%;
+    }
+
+    .contenedor .cont h3 {
+        font-size: 1.7rem;
+    }
+
+    .contenedor .cont p {
+        font-size: 1rem;
+    }
+
+
+    .galeria {
+        max-width: 380px;
+        aspect-ratio: 4 / 3;
+    }
+
+    .galeria figure {
+        left: 8%;
+        width: 84%;
+    }
+
+    .galeria input {
+        width: 18%;
+    }
+}
+
+/* Mobile*/
+@media (max-width: 768px) {
+    header {
+        padding: 3rem 2rem;
+    }
+
+    header h1 {
+        font-size: 2.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    .titulo-servicios-habitaciones {
+        margin-top: 1rem;
+    }
+
+    .titulo-servicios-habitaciones h3 {
+        font-size: 1.4rem;
+    }
+
+    /* 2 columnas en móvil */
+    .listado-servicios-habitaciones {
+        grid-template-columns: 2 1fr;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .listado-servicios-habitaciones svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .listado-servicios-habitaciones p {
+        font-size: 0.95rem;
+    }
+
+    /* ========= Nav ========== */
+    /* mostrar hamburguesa */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* el UL se oculta por defecto en mobile */
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        /* coincide con height del nav */
+        right: 0;
+        width: 100%;
+        padding: 20px 0;
+        margin: 0;
+        gap: 1.5rem;
+        background-color: rgb(253, 245, 235);
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* cuando está activo → se muestra */
+    nav ul.active {
+        display: flex;
+        z-index: 1100;
+        /*PENDIENTE ESTUDIAR ESTO .ACTIVE*/
+    }
+
+    /* el logo que no se vuelva diminuto */
+    nav img {
+        height: 35px;
+    }
+
+    /* ========= Main ========== */
+    main {
+        padding: 3rem 0;
+    }
+
+    #wrapper {
+        width: 95%;
+    }
+
+    #wrapper label {
+        display: block;
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+    }
+
+    .contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contenedor .cont {
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .contenedor .cont ul {
+        padding-left: 0;
+    }
+
+    .contenedor .cont li::before {
+        display: none;
+    }
+
+    .galeria {
+        width: 100%;
+        max-width: 320px;
+        aspect-ratio: 4 / 3;
+    }
+
+    .galeria figure {
+        left: 5%;
+        width: 90%;
+    }
+
+    .galeria img {
+        border-radius: 6px;
+    }
+
+    .galeria input {
+        width: 25%;
+    }
+
+    .galeria input:checked~figure {
+        left: 85%;
+    }
+
+    /* ========= Footer ========== */
+    footer {
+        padding: 1.5rem 1rem;
+        text-align: center;
+    }
+
+    #contenedor-caja-footer {
+        flex-direction: column;
+        align-items: center;
+        /* centra todo */
+        gap: 2rem;
+    }
+
+    #contenedor-caja-footer h4 {
+        margin: .2rem;
+    }
+
+    #caja-informacion li,
+    #caja-contacto a {
+        margin: .4rem 1.4rem;
+    }
+
+    .social-links a {
+        width: 30px;
+        /* un poquito más grande para tocar con dedo */
+        margin: 1rem;
+    }
+}
+
+
+/* ===== Contenedor de la galería ===== */
 .galeria {
-    width: 450px;
-    /*siempre mide 450 px */
-    height: auto;
-    /*mantener proporción*/
-    margin: auto 0;
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    /* límite en desktop */
+    margin: auto;
     overflow: hidden;
     /* ocultamos lo que sobresalga de las imágenes del contenedor*/
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.08);
-    /*border: 5px solid rgba(189, 188, 188, 0.5);*/
+    aspect-ratio: 16 / 9;
+    /* mantiene proporción visual */
 }
 
-/* estilo para las imágenes de la galería */
+
+/* ===== Imágenes ===== */
 .galeria figure {
     position: absolute;
     /* hace que se superpongan las imágenes */
     top: 0;
     /* colocamos todas arriba */
-    left: 60px;
-    /* !!Ancho de la parte visible!! */
+    left: 10%;
+    /* !!Ancho de la parte visible!!. 10%; en lugar de 60px fijos.  */
     width: 400px;
     box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.7);
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
 }
 
 /* estilo inicial para la primera imagen. > selector de hijo directo */
@@ -377,15 +631,17 @@ footer {
     /* ajusta la imagen para que ocupe todo el ancho del contenedor */
     height: 260px;
     /*inicialmente no había definido height pero las imagenes correspondientes a la habitacion familiar se desajustaron*/
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-/* estilo para los "controles de navegación" */
+/* ===== Navegación ===== */
 .galeria input {
     position: absolute;
     top: 0;
     left: 0;
     /*Los input se colocan encima de las imágenes, alineados en la esquina superior izquierda*/
-    width: 60px;
+    width: 15%;
     /*Para cubrir la parte visible de la imagen*/
     height: 100%;
     /* cubre toda la altura del contenedor*/
@@ -408,12 +664,12 @@ footer {
 
 /*escondemos el input cuando está seleccionado y evitamos que interfiera al cambiar la imagen*/
 .galeria input:checked {
-    width: 5px;
-    /* Su ancho se reduce a 5px */
+    width: 3%;
+    /* Su ancho se reduce a un 3% */
     left: auto;
     /* Deja de estar alineado a la izquierda (left: auto) */
-    right: 0px;
-    /* Se mueve al borde derecho (right: 0px) */
+    right: 0;
+    /* Se mueve al borde derecho (right: 0) */
 }
 
 /*mueve las imagenes a la izquierda. ~ selecciona los hermanos siguientes al elemento*/
@@ -423,11 +679,11 @@ footer {
     -o-transition: all 0.7s ease-in-out;
     -ms-transition: all 0.7s ease-in-out;
     transition: all 0.7s ease-in-out;
-    left: 335px;
+    left: 75%;
     /**-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     opacity: 0;* PENDIENTE/
-    /*Cuando un input dentro de .galeria está marcado: todos los figure hermanos que vienen después se mueven 335px a la izquierda/derecha*/
+    /*Cuando un input dentro de .galeria está marcado: todos los figure hermanos que vienen después se mueven 335px (ahora 75%) a la izquierda/derecha*/
 }
 
 /*Cuando un input dentro de .galeria está marcado, aplica estilos a los input que estén dentro de los figure que vienen después de él*/
@@ -446,44 +702,4 @@ figure {
     /*Los <figure> por defecto suelen tener márgenes verticales y horizontales, dependiendo del navegador, al poner margin 0:
     Las imágenes se alinean perfectamente dentro del contenedor .galeria.
     Evita que haya espacios extra entre imágenes o con los bordes del contenedor.*/
-}
-
-/*PENDIENTE REVISAR PORQUE QUEDA ABIERTA LA ULTIMA IMAGEN EN VEZ DE LA PRIMERA*/
-
-
-
-/* ---- responsive ---- */
-/* tablet */
-@media (max-width: 991px) {
-    .listado-servicios-habitaciones {
-        grid-template-columns: repeat(2, 1fr);
-        border-inline: none;
-    }
-}
-
-/* mobile */
-@media (max-width: 767px) {
-    .listado-servicios-habitaciones {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        border-inline: none;
-        text-align: center;
-        justify-items: center;
-    }
-
-    .listado-servicios-habitaciones li {
-        flex-direction: column;
-        padding: 0;
-        gap: 0.6rem;
-    }
-
-    .listado-servicios-habitaciones svg {
-        width: 36px;
-        height: 36px;
-    }
-
-    .listado-servicios-habitaciones p {
-        font-size: 0.95rem;
-        max-width: 240px;
-    }
 }

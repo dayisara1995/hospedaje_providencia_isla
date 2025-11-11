@@ -350,7 +350,7 @@ footer {
 
 /* ===== Media Queries ===== */
 
-/* Tablets medianos */
+/* Tablet */
 @media (max-width: 1024px) {
     header .texto-header {
         width: 50%;

@@ -29,15 +29,6 @@ window.addEventListener('scroll', () => {
 });
 
 
-//Nav
-const navToggle = document.querySelector(".nav-toggle");
-const navMenu = document.querySelector("nav ul");
-
-navToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-});
-
-
 // MODAL DISPONIBILIDAD
 const modal = document.getElementById('modal-disponibilidad');
 const btnBuscar = document.querySelector('.btn-buscar');
