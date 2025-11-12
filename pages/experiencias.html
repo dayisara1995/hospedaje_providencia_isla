@@ -93,6 +93,13 @@
 
     <nav>
         <a href="../index.html"><img src="../imagenes/logo.png" alt="logo"></a>
+
+        <!-- botón hamburguesa: este botón solo se ve en pantallas pequeñas (mobile). En desktop se oculta -->
+        <button class="nav-toggle" aria-label="Abrir menú">
+            ☰
+            <!--“aria” = Accessible Rich Internet Applications; aria-label se usa para accesibilidad (A11Y), este texto no lo ve el usuario normal pero un lector de pantalla sí, por ejemplo usuarios ciegos que navegan con VoiceOver o TalkBack. El aria-label les dice: “este botón sirve para abrir el menú”. Es profesional y correcto ponerlo.-->
+        </button>
+
         <ul>
             <li><a href="../pages/alojamiento.html">Alojamiento</a></li>
             <li><a href="../pages/experiencias.html">Experiencias</a></li>
@@ -162,6 +169,7 @@
             </div>
         </div>
     </footer>
+    <script src="../js/nav.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,30 @@
+/* ===== Font Import ===== */
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bad+Script&family=Handlee&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bad+Script&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Handlee&display=swap');
 
+
+/* ===== Selector universal ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* ===== Tamaño base ===== */
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+
+    html {
+        font-size: 14px;
+    }
+}
+
+
+/* ===== Body ===== */
 body {
     margin: 0;
     padding: 0;
@@ -38,8 +62,8 @@ header video {
 
 header .contenido-header {
     position: relative;
-    top: 40%;
-    width: 60%;
+    top: 30%;
+    width: 70%;
     height: 30%;
     margin: auto;
     text-align: center;
@@ -178,38 +202,44 @@ main {
     /*Con forwards, el elemento mantiene el estilo final de la animación (no vuelve al inicio).*/
     /*Sintaxis general de animation:
     animation: animation-name animation-duration animation-timing-function animation-delay animation-iteration-count animation-direction animation-fill-mode animation-play-state;*/
-/*animation-name: Define qué animación usar, es decir, a cuál @keyframes se conecta.*/
-/*animation-duration: Define cuánto dura la animación. Se expresa en segundos (s) o milisegundos (ms).*/
-/*animation-timing-function: Controla cómo cambia la velocidad de la animación durante su duración, ejemplo,ease-in-out: Empieza y termina lento*/
-/*animation-delay: Retrasa el inicio de la animación. ---> animation-delay: 1s; /* empieza 1 segundo después */
-/*animation-iteration-count: Indica cuántas veces se repite la animación.  ---> animation-iteration-count: infinite;
+    /*animation-name: Define qué animación usar, es decir, a cuál @keyframes se conecta.*/
+    /*animation-duration: Define cuánto dura la animación. Se expresa en segundos (s) o milisegundos (ms).*/
+    /*animation-timing-function: Controla cómo cambia la velocidad de la animación durante su duración, ejemplo,ease-in-out: Empieza y termina lento*/
+    /*animation-delay: Retrasa el inicio de la animación. ---> animation-delay: 1s; /* empieza 1 segundo después */
+    /*animation-iteration-count: Indica cuántas veces se repite la animación.  ---> animation-iteration-count: infinite;
 /*animation-direction: Controla en qué dirección se ejecutan las repeticiones.*/
-/*animation-fill-mode: Define cómo se comporta el elemento antes y después de la animación. ---> animation-fill-mode: forwards; /*Mantiene el estilo final (to { ... }).*/
-/*animation-play-state: Permite pausar o reanudar una animación.*/
+    /*animation-fill-mode: Define cómo se comporta el elemento antes y después de la animación. ---> animation-fill-mode: forwards; /*Mantiene el estilo final (to { ... }).*/
+    /*animation-play-state: Permite pausar o reanudar una animación.*/
 }
 
 
 @keyframes animate {
     from {
-        opacity: 0; /*comienza invisible*/
-        transform: translate(0, 100px); /*empieza desplazado 100px hacia abajo.*/
-        filter: blur(33px); /*empieza desenfocado.*/
+        opacity: 0;
+        /*comienza invisible*/
+        transform: translate(0, 100px);
+        /*empieza desplazado 100px hacia abajo.*/
+        filter: blur(33px);
+        /*empieza desenfocado.*/
     }
 
     to {
-        opacity: 1; /*termina visible.*/
-        transform: translate(0); /*regresa a su posición original.*/
-        filter: blur(0); /*se vuelve nítido.*/
+        opacity: 1;
+        /*termina visible.*/
+        transform: translate(0);
+        /*regresa a su posición original.*/
+        filter: blur(0);
+        /*se vuelve nítido.*/
     }
 }
 
 .galeria-contenido h2 {
-    font-size: 30px;
+    font-size: 2rem;
     font-weight: 400;
 }
 
 .galeria-contenido p {
-    font-size: 20px;
+    font-size: 1.5rem;
     font-family: "Alumni Sans Pinstripe", sans-serif;
     font-weight: 400;
 }
@@ -280,4 +310,122 @@ footer {
 .social-links a:hover {
     fill: #0a574e94;
     transform: scale(1.1);
+}
+
+/* ===== Media Queries ===== */
+
+/* Mobile*/
+@media (max-width: 768px) {
+
+    header video {
+        width: 100%;
+    }
+
+    header::before {
+    width: 100%;
+}
+
+    /* Header contenido */
+    header .contenido-header {
+        width: 90%;
+        top: 30%;
+        padding: 0 1rem;
+    }
+
+    .contenido-header h1 {
+        font-size: 2.4rem;
+    }
+
+    .contenido-header p {
+        font-size: 1.4rem;
+    }
+
+    /* Galería */
+    .galeria-experiencias {
+        width: 100%;
+        margin: 2% 0;
+    }
+
+    .galeria-contenido {
+        height: auto;
+        padding: 5% 5%;
+    }
+
+    .galeria-contenido h2 {
+        font-size: 1.8rem;
+    }
+
+    .galeria-contenido p {
+        font-size: 1.2rem;
+    }
+
+    .galeria-imagen img {
+        height: 350px;
+    }
+
+    .galeria-experiencias::before {
+        height: auto;
+    }
+
+    /* ========= Nav ========== */
+    /* mostrar hamburguesa */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* el UL se oculta por defecto en mobile */
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        /* coincide con height del nav */
+        right: 0;
+        width: 100%;
+        padding: 20px 0;
+        margin: 0;
+        gap: 1.5rem;
+        background-color: rgb(253, 245, 235);
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* cuando está activo → se muestra */
+    nav ul.active {
+        display: flex;
+        z-index: 1100;
+        /*PENDIENTE ESTUDIAR ESTO .ACTIVE*/
+    }
+
+    /* el logo que no se vuelva diminuto */
+    nav img {
+        height: 35px;
+    }
+
+    /* ========= Footer ========== */
+    footer {
+        padding: 1.5rem 1rem;
+        text-align: center;
+    }
+
+    #contenedor-caja-footer {
+        flex-direction: column;
+        align-items: center;
+        /* centra todo */
+        gap: 2rem;
+    }
+
+    #contenedor-caja-footer h4 {
+        margin: .2rem;
+    }
+
+    #caja-informacion li,
+    #caja-contacto a {
+        margin: .4rem 1.4rem;
+    }
+
+    .social-links a {
+        width: 30px;
+        /* un poquito más grande para tocar con dedo */
+        margin: 1rem;
+    }
 }
